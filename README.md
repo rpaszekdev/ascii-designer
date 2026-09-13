@@ -64,4 +64,5 @@ ASCII you would paste — streamed into a sheet at that spot and re-read as ever
 With a selection, the selection's ASCII goes along as context and the answer is the redrawn version. Put `MINIMAX_API_KEY=…` in
 `.env` (optional `MINIMAX_MODEL`, default `MiniMax-M2.5`); `server.js` proxies `POST /ai` so the key stays on the server.
 
-No build, no dependencies: `public/` is the whole app; `reader.js` (ASCII → tree) and `printer.js` (tree → ASCII) are the interesting files.
+Deployed on Railway at https://ascii-designer-production.up.railway.app (`railway up` from the repo root; `MINIMAX_API_KEY` and
+`MINIMAX_MODEL` live in the service variables). No build, no dependencies: `public/` is the whole app; `reader.js` (ASCII → tree) and `printer.js` (tree → ASCII) are the interesting files.

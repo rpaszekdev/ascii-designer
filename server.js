@@ -29,7 +29,7 @@ const readBody = (req, limit = 16 * 1024 * 1024) => new Promise((resolve, reject
 
 // streams MiniMax's content deltas to the client as plain text; aborts upstream when the client goes away
 async function ai(req, res) {
-  if (!KEY) return res.writeHead(500, { 'Content-Type': 'text/plain' }).end('MINIMAX_API_KEY missing in .env');
+  if (!KEY) return res.writeHead(500, { 'Content-Type': 'text/plain' }).end('MINIMAX_API_KEY not set (put it in .env locally, or in the host\'s variables)');
   let body;
   try { body = JSON.parse(await readBody(req)); } catch (e) { return res.writeHead(400, { 'Content-Type': 'text/plain' }).end(`bad request: ${e.message}`); }
   const { prompt, context, elements, image } = body;
