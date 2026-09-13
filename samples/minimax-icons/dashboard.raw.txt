@@ -1,0 +1,64 @@
+<think>
+Let me create an analytics dashboard ASCII sketch following the specified idioms.
+
+Requirements:
+- Screen: rectangle with title on top edge
+- Sidebar with 5 nav items
+- Header
+- 4 KPI cards each with an icon
+- Big chart area
+- 60-90 characters wide, up to 40 lines
+
+Let me think about the layout:
+- Screen width: around 70-80 characters
+- Sidebar: maybe 15-20 chars wide
+- Main content area: remaining space
+
+Let me build this:
+
+```
+┌─ Analytics Dashboard ──────────────────────────┐
+│ ┌──────┐ ┌────────────────────────────────────┐ │
+│ │      │ │  Welcome back, User    [:bell:]    │ │
+│ │ Logo │ └────────────────────────────────────┘ │
+│ │      │ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│
+│ ├──────┤ │ Users  │ │Revenue │ │ Orders │ │Growth  ││
+│ │ Nav  │ │ 12,345 │ │$45.2K  │ │  892   │ │ +23%   ││
+│ │      │ │ [:user]│ │[:dollar]│[:bag]  │ │[:trend]││
+│ │      │ └────────┘ └────────┘ └────────┘ └────────┘│
+│ │      │ ┌──────────────────────────────────────┐  │
+│ │      │ │           Revenue Over Time         │  │
+│ │      │ │        ┌─────────────────┐          │  │
+│ │      │ │     ╱  │                 │╲         │  │
+│ │      │ │   ╱    │                 │  ╲       │  │
+│ └──────┘ └──────────────────────────────────────┘  │
+└────────────────────────────────────────────────────┘
+
+
+```
+
+I need to reconsider the sidebar structure. With 5 navigation items and the main content area to the right, I can organize it more effectively. The sidebar should display the logo at the top, followed by Dashboard, Analytics, Reports, Settings, and Support as the five nav options. Then I'll place the KPI cards in a row across the top of the main content area, with a chart section below them.
+
+```
+</think>
+
+```ascii
+┌─ Analytics Dashboard ────────────────────────────┐
+│ ┌────────┐ ┌────────────────────────────────────┐│
+│ │        │ │  Welcome back, User     [:bell:]   │ │
+│ │ :chart:│ └────────────────────────────────────┘│
+│ │        │ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│
+│ ├────────┤ │  Users │ │Revenue │ │ Orders │ │Growth  ││
+│ │Dashboard│ │ 12,345 │ │ $45.2K │ │   892  │ │  +23%  ││
+│ │Analytics│ │ [:user]│ │[:coin:] │ │[:bag:] │ │[:trend:]││
+│ │ Reports │ └────────┘ └────────┘ └────────┘ └────────┘│
+│ │ Settings│ ┌──────────────────────────────────────┐  │
+│ │ Support │ │         Revenue Over Time           │  │
+│ │        │ │        ┌─────────────────┐             │  │
+│ │        │ │     ╱  │                 │╲            │  │
+│ │        │ │   ╱    │                 │  ╲          │  │
+│ │        │ │  ╱     │                 │    ╲        │  │
+│ │        │ │─►      │                 │      ─►     │  │
+│ └────────┘ └──────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────┘
+```

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "cats",
+    "size": "41x21",
+    "chars": 452,
+    "boxes": 10,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "31%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:318 arrowsUni:9 boxRounded:0"
+  },
+  {
+    "name": "dna",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  },
+  {
+    "name": "dragon",
+    "size": "63x25",
+    "chars": 451,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "9%",
+    "unknown": "43%",
+    "strokes%": "73%",
+    "top": "fills:194 waves:131 boxSingle:92"
+  },
+  {
+    "name": "heart",
+    "size": "62x12",
+    "chars": 296,
+    "boxes": 4,
+    "arrows": 10,
+    "widgets": 0,
+    "text": "39%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxDouble:144 boxSingle:56 arrowsUni:14"
+  },
+  {
+    "name": "nn",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  },
+  {
+    "name": "onboarding",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  },
+  {
+    "name": "solar",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  },
+  {
+    "name": "steampunk",
+    "size": "70x16",
+    "chars": 323,
+    "boxes": 1,
+    "arrows": 0,
+    "widgets": 1,
+    "text": "35%",
+    "unknown": "10%",
+    "strokes%": "1%",
+    "top": "boxSingle:216 asciiBox:10 arrowsAscii:6"
+  },
+  {
+    "name": "treasure",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  },
+  {
+    "name": "water",
+    "size": "0x0",
+    "chars": 0,
+    "boxes": 0,
+    "arrows": 0,
+    "widgets": 0,
+    "text": "0%",
+    "unknown": "0%",
+    "strokes%": "0%",
+    "top": "boxSingle:0 boxRounded:0 boxDouble:0"
+  }
+]

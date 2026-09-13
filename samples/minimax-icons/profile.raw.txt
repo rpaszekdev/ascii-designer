@@ -1,0 +1,138 @@
+<think>
+The user wants me to sketch a mobile profile screen in ASCII using the specific idioms they've outlined. Let me create this:
+
+- Need a screen container
+- Avatar at top (use icon)
+- Name
+- Stats row (maybe followers, following, posts)
+- Settings list with icons
+- Logout button at bottom
+- Should be around 60-90 characters wide, up to 40 lines
+
+Let me create this:
+
+```
+┌────────────────────────────────────┐
+│           Profile                  │
+├────────────────────────────────────┤
+│           ┌──────────┐              │
+│           │ :user:   │              │
+│           └──────────┘              │
+│                                    │
+│          John Doe                  │
+│          @johndoe                  │
+│                                    │
+│    ┌──────┐ ┌──────┐ ┌──────┐      │
+│    │ 120  │ │ 480  │ │  25  │      │
+│    │Posts │ │Follow │ │Following│   │
+│    └──────┘ └──────┘ └──────┘      │
+│                                    │
+├────────────────────────────────────┤
+│  [:settings:]  Settings            │
+│  [:bell:]      Notifications       │
+│  [:heart:]     Favorites           │
+│  [:globe:]     Language            │
+│  [:lock:]      Privacy             │
+├────────────────────────────────────┤
+│        [ Log out ]                 │
+└────────────────────────────────────┘
+```
+
+Wait, I need to check the icon names. They said nouns: rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain. Let me use valid ones:
+
+- user, bell, heart, globe, lock (they didn't list lock but it's common)
+
+Actually they only listed: rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain
+
+Let me use: user, bell, heart, globe. Lock isn't listed so maybe I shouldn't use it. Let me re-read... 
+
+Icons can be any Lucide icon name between colons. The list is examples of nouns. So I can use lock too. Let me redo this more carefully.
+
+```
+┌────────────────────────────────────┐
+│           Profile                  │
+├────────────────────────────────────┤
+│                                    │
+│           ┌──────────┐             │
+│           │  :user:  │             │
+│           └──────────┘             │
+│                                    │
+│          John Doe                  │
+│          @johndoe                  │
+│                                    │
+│   ┌────┐   ┌────┐   ┌────┐        │
+│   │120 │   │480 │   │ 25 │        │
+│   │Posts│   │Foll│   │Foll│        │
+│   └────┘   └────┘   └────┘        │
+│                                    │
+├────────────────────────────────────┤
+│  [:settings:]  Settings            │
+│  [:bell:]      Notifications       │
+│  [:heart:]     Favorites           │
+│  [:globe:]     Language            │
+│  [:lock:]      Privacy             │
+├────────────────────────────────────┤
+│        [ Log out ]                 │
+└────────────────────────────────────┘
+```
+
+That's around 38 characters wide. Let me make it a bit wider for a phone view, around 50-60 chars.
+
+```
+┌──────────────────────────────────────────┐
+│              Profile                     │
+├──────────────────────────────────────────┤
+│                                          │
+│            ┌──────────┐                  │
+│            │  :user:  │                  │
+│            └──────────┘                  │
+│                                          │
+│           John Doe                       │
+│           @johndoe                       │
+│                                          │
+│    ┌──────┐    ┌──────┐    ┌──────┐      │
+│    │ 120  │    │ 480  │    │  25  │      │
+│    │Posts │    │Follow│    │Follw │      │
+│    └──────┘    └──────┘    └──────┘      │
+│                                          │
+├──────────────────────────────────────────┤
+│  [:settings:]   Settings                │
+│  [:bell:]       Notifications           │
+│  [:heart:]      Favorites                │
+│  [:globe:]      Language                 │
+│  [:lock:]       Privacy                  │
+├──────────────────────────────────────────┤
+│           [ Log out ]                    │
+└──────────────────────────────────────────┘
+```
+
+Now the width is around 50 characters, which works well for mobile. The structure has the profile header with avatar and user info, a stats section showing posts/followers/following, a settings menu with icons, and a logout button at the bottom.
+</think>
+
+```code
+┌──────────────────────────────────────────┐
+│               Profile                    │
+├──────────────────────────────────────────┤
+│                                          │
+│            ┌──────────┐                  │
+│            │  :user:  │                  │
+│            └──────────┘                  │
+│                                          │
+│           John Doe                       │
+│           @johndoe                       │
+│                                          │
+│    ┌──────┐    ┌──────┐    ┌──────┐      │
+│    │ 120  │    │ 480  │    │  25  │      │
+│    │Posts │    │Follow│    │Follw │      │
+│    └──────┘    └──────┘    └──────┘      │
+│                                          │
+├──────────────────────────────────────────┤
+│  [:settings:]   Settings                │
+│  [:bell:]       Notifications           │
+│  [:heart:]      Favorites                │
+│  [:globe:]      Language                 │
+│  [:lock:]       Privacy                  │
+├──────────────────────────────────────────┤
+│           [ Log out ]                   │
+└──────────────────────────────────────────┘
+```

@@ -1,0 +1,471 @@
+<think>
+We need to produce a sketch in ASCII of a deployment pipeline diagram: code → build → test → deploy → monitor, each step a box with an icon, arrows between.
+
+We need to use the components defined: screen rectangle, sections, boxes, icons as tokens inside box.
+
+The user wants "Draw only ASCII, in one code block, no explanation." So we need to output just the ASCII drawing.
+
+The guidelines: Use exactly these idioms: 
+
+- A screen is one rectangle: top: `┌────┐`, sides: `│    │`, bottom: `└────┘`. Title on top edge if you like: `┌─ Settings ─────┐`. Use plain ASCII `+----+` / `|  |` if you prefer plain ASCII.
+
+- Sections inside a screen are smaller rectangles. Full-width box at top is nav, at bottom footer.
+
+- Buttons: `[ Sign up ]` etc.
+
+- Input: `[email__________]`.
+
+- Select: `[ Country ▾ ]`.
+
+- Checkbox `[x]`, `[ ]`.
+
+- Radio `(o)`, `( )`.
+
+- Link: `< Watch demo >`.
+
+- Headings: `# Title`, `## Subtitle`.
+
+- Image: a box with diagonals or line of `~~~~~~~~`.
+
+- Divider: `──────`, arrow: `──►`.
+
+- Plain words are text. Leave blank line between elements when you can; spacing is preserved 1:1.
+
+- Widths matter.
+
+- Anything else you draw stays on the canvas as grey text - fine for notes.
+
+- Icons: Write a Lucide icon name between colons. Inline: `Settings [:settings:]`. For a big icon, draw a box and put ONLY the token inside it - the box is the icon's size.
+
+We need to draw a deployment pipeline diagram: code → build → test → deploy → monitor, each step a box with an icon, arrows between.
+
+So we can use a screen box to enclose the whole diagram. Use a top nav maybe "Pipeline". Use a bottom footer.
+
+Within the screen we can draw five boxes (for each step). Each box should contain an icon, possibly a label like "Code". And arrows between them: `──►`.
+
+The diagram width: about 60-90 characters. Height up to 40 lines.
+
+We need to ensure each row of a box is same width.
+
+Use "plain ASCII" (with Unicode box-drawing characters maybe). The guidelines allow using either `┌────┐` style or plain ASCII with `+----+` etc. Use both maybe but keep consistent.
+
+We need to follow exactly: Use a screen rectangle: top: `┌────┐`, sides: `│    │`, bottom: `└────┘`. Title on top edge: `┌─ Settings ─────┐`. Use `+----+` / `|  |` if we prefer plain ASCII.
+
+Thus perhaps we could draw a screen with title "Pipeline" and then within that we place the diagram.
+
+We need to include icons for each step: we can use tokens like `:code:`, `:hammer:`, `:check:`, `:rocket:`, `:chart:` or something. Let's think: Lucide icons: "code", "hammer", "check-circle", "rocket", "activity" maybe. The user gave a list: rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain. But there might be others; but it's okay to use these if appropriate: "code" is not in list. We can still use maybe "code" is not in list. However the guidelines: "Use icons for nouns (rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain). Never draw the object with characters when an icon name exists." They gave examples: Use icons for nouns like rocket, database, etc. Does "code" exist? Possibly "code" is a Lucide icon name. In Lucide there is "code". The guidelines say: "Icons: write a Lucide icon name between colons. Inline: `Settings [:settings:]`. For a big icon, draw a box and put ONLY the token inside it — the box is the icon's size." So we can use any Lucide icon name. So we can use icons: code, hammer, check, rocket, activity. Use the colon token: `:code:`, `:hammer:`, etc.
+
+We need to draw a box for each step, with the icon inside.
+
+The boxes can be drawn with "plain ASCII" with plus and minus/dashes: maybe `+-----+` and `|     |`. Or use the box-drawing characters. The guidelines said we can use either. We'll probably use box-drawing characters for nicer appearance.
+
+The boxes should be small rectangles containing the icon token on a line inside.
+
+We need arrows between them: `──►`.
+
+The diagram will be something like:
+
+```
+┌─ Pipeline ─────────────────────────────┐
+│                                          │
+│   ┌─────────┐    ┌─────────┐    ┌─────────┐   ...
+│   │ :code:  │──►│ :hammer:│──►│ :check: │ ...
+│   └─────────┘    └─────────┘    └─────────┘
+```
+
+But we need each step to have a label as well, maybe "Code", "Build", "Test", "Deploy", "Monitor". Could add a label below the icon: maybe in the box we can include "Code" under the icon.
+
+But the guidelines: "A full-width box at the top is the nav, at the bottom the footer." Not needed here. Use screen.
+
+We'll have a screen rectangle around the whole diagram.
+
+We need to keep width ~60-90 characters. Let's calculate: each step box maybe width 11 characters? Something like `┌─────────┐` is 10 characters? Actually it's 1 plus 9 dashes plus 1 = 11? Let's count: "┌─────────┐": that is a corner, then 9 dashes, then corner: total 11 characters. Actually it's 1 + 9 +1 =11. So each box 11 wide. Then spaces between boxes and arrows. The arrow maybe "──►" (2 dashes + arrow). Actually "──►" is maybe 4 characters: two dashes and the arrow char (maybe it's a unicode arrow "►"? Could also use "->". The guidelines specify "──►" arrow between things. So we can use that.
+
+Thus arrangement: [Box] space "──►" space [Box] space "──►" etc.
+
+We can have 5 boxes, each width 11, plus 4 arrow characters + spaces between: let's layout:
+
+Box 1 (11 chars) + " ──► " (5 chars including spaces) = 16. Then Box 2 = 11 => 27. Then arrow => 5 => 32. Box3 => 11 => 43. Arrow => 5 => 48. Box4 => 11 => 59. Arrow => 5 => 64. Box5 => 11 => 75. So total width ~75 characters. That fits 60-90.
+
+Thus we can have a screen width of maybe 80 characters: we need top and bottom edges and sides.
+
+We can make the screen width of like 78 characters (including edges). Use something like: top line: `┌─ Pipeline ───────────────────────────────────────┐`. That's 1 `┌`, dash, space, title, space, dashes, then `┐`. The title line should be same width as bottom and side columns.
+
+We need to ensure each row of a box is same width: the screen rectangle must be same width across all rows.
+
+Thus we need to compute width: Let's decide width = 79 maybe (including edges). Title line: we can have something like `┌─ Pipeline ────────────────────────────────┐`. Count: characters: start `┌` (1), `-` (2), space (3), "Pipeline" (8 letters) => now at 11, space (12), then we need dashes to fill to match width -2 (the final `┐`). So we need total width = maybe 79? Let's compute more exactly.
+
+We can make width of 77 maybe. Let's decide width = 77 characters (including edges). Then title line will have 77 characters. Let's compute: left border `┌` (position 1). Then dash (2). Then space (3). Then "Pipeline" (positions 4-11). Then space (12). Then we need dashes from position 13 to position 76 (since final `┐` at 77). So we need 76-13+1 = 64 dashes. Then final `┐` at 77. So title line: `┌- Pipeline ─────────────────────────────────────────┐`? Wait need correct count. Let's compute: we need 64 dashes after the space after "Pipeline". Let's count: after "Pipeline " there are positions 13..76 = 64 characters. So we need 64 dashes. That's long. Maybe we can have shorter width like 61? Let's target width 61. Then count: left border =1, dash=2, space=3, "Pipeline" (8) positions 4-11, space =12. Then dashes from positions 13 to 60 (since final border at 61). That's 48 dashes. That's still many. Perhaps we can go narrower: 51 characters? Let's target 51. Then: left border 1, dash 2, space 3, "Pipeline" 8 -> positions 4-11, space 12, dashes from 13 to 50 (since final border at 51) = 38 dashes. That's a bit less.
+
+But perhaps we don't need a title. Could just use a plain screen rectangle: top line: `┌──────────────────────────────┐`. That is 1+30+1 = 32? Let's count: "┌" + 30 dashes + "┐". If we want width around 75 we can have many dashes.
+
+Better approach: Use plain ASCII with plus and minus: `+------------------------------+`. That's 1+30+1 = 32. That is maybe narrower. But we need width ~75. We can set plus border of width 75. Eg: `+-------------------------------------------------------------------------+`. That's maybe 81? Let's count: start '+' then 79 dashes then '+' = 81 characters. That's maybe okay.
+
+But we also need side borders as `|`. So we need to keep width consistent.
+
+Thus we can use top and bottom lines with many dashes. Or use "-----" style.
+
+Simplify: Let's use box drawing characters: top line: `┌────────────────────────────────────────────────────────────┐`. That's maybe 70? Let's count exactly: "┌" + 70 dashes + "┐". We can choose 70. Then each row inside the screen will have width 72? Actually side borders add 2 characters. So if top line has 70 dashes, the width inside between side borders is 70 spaces.
+
+Thus we can decide to have top line with 70 dashes: that yields width = 72 characters (including corners). Actually it's 1 + 70 + 1 = 72. Then inside we can have content width 70 characters. That's within 60-90. Good.
+
+Let's count: if we have top line: `┌──────────────────────────────────────┐`. How many dashes? Let's count: maybe 38? Let's count exactly. We'll decide a width maybe 71? Let's try to produce a line with 70 dashes: we can type 70 dashes. For easier, we can use number of dashes equal to something like 38? Let's just approximate but ensure each row same width.
+
+But we also need to match the side borders: each line inside must have a left border char (maybe `│`) and right border char (maybe `│`). Then the content area width must be exactly number of dashes in top line minus 2? Wait top line: we have `┌` then Dashes then `┐`. The side borders use `│`. The content width is the number of dashes between the corners. So for top line we need to determine the number of dashes. Then each interior row will have left border, then content of exactly that many spaces (or characters), then right border.
+
+Thus we must compute exact number of dashes for the top line to match interior content width. We'll choose a width of maybe 61 dashes (makes interior width 61). Then total width = 63 (including corners). Let's see: 61 dashes yields interior width of 61. Then we have left border at column1: `│`, content at columns 2..62 (61 characters), right border at column63: `│`. Then bottom line: `└` + 61 dashes + `┘`. That matches.
+
+We need to ensure content fits the pipeline diagram: total width of diagram ~75 as earlier, but we can reduce to 61? Wait earlier we computed width ~75 for diagram. That may exceed interior width of 61. So maybe we need interior width >75. Actually interior width of 61 is too small. So we need interior width at least 75. So choose number of dashes = maybe 75. Then total width = 77. That's okay (within 60-90). Let's choose 75 dashes.
+
+Thus top line: `┌` + 75 dashes + `┐`. That's total width 77 (including corners). Interiors: left border `│`, content width 75, right border `│`. Bottom line: `└` + 75 dashes + `┘`. This fits.
+
+Thus we need to generate top line with exactly 75 dashes. Let's count: 75 dashes. That's long but doable. Then we need interior lines of exactly 77 characters: first char `│`, then 75 content chars, then final `│`. We'll need to pad content appropriately.
+
+The diagram: The pipeline steps boxes plus arrows will be placed inside. The interior width is 75 characters. We need to ensure each line has exactly 75 characters between the side borders.
+
+Thus we need to design the content lines accordingly. The easiest is to have a few lines: maybe one line with the diagram and maybe some blank lines above and below.
+
+We'll have a title maybe not needed but we can include inside the screen. The guidelines allow a title on top edge: `┌─ Settings ─────┐`. But we can also incorporate title as part of the interior, maybe we don't need. The guidelines say we can put a title on the top edge if you like: `┌─ Settings ─────┐`. That is a top line that includes the title and the dashes. That's a different style. We could adopt that: use the top line to show title "Pipeline". That would be like `┌─ Pipeline ────────────────────────────────┐`. That includes a title and dashes. That is similar to using top line with title. That may be easier: we just need to ensure each row matches width of that top line.
+
+Thus we can adopt that style: top line: `┌─ Pipeline ─────────────────────────────────────────┐`. That is a corner, dash, space, title, space, dashes, corner. The interior width must be the length of that line minus the two corner characters (the `┌` and `┐`). That interior width equals the number of characters between corners: everything else in that line. That includes the dash after corner? Wait they gave example: `┌─ Settings ─────┐`. Let's examine: "┌─ Settings ─────┐". The pattern is: left corner `┌`, then `-` (dash), then space, then "Settings", then space, then dashes, then right corner `┐`. The interior area is the part between the side borders? Actually we treat the top line as border. The interior width equals the length of the top line minus 2 (the corners). That includes everything else: dash, space, title, space, dashes.
+
+Thus we can use that style, but we need to match interior lines: each interior line must be the same width as the top line (including side borders). So we must create a top line of certain width, and then each interior line must be exactly same width (including side borders). So we need to decide the width, then produce the interior lines accordingly.
+
+Given we want a width of maybe around 77, we can create top line accordingly. Let's decide a width of maybe 61? Not sure. Let's just compute the interior content width using our earlier approach: we want diagram width of 75. Then we need interior width of 75. Then the top line must have interior width of 75 as well. The top line includes left border? Actually it's top border, not side borders. The interior lines have side borders at left and right (the `│`). So the interior width between side borders must equal the interior width (the number of characters between corners on top line). So we need to determine the interior width = number of characters between corners on top line = total length - 2. So if we want interior width 75, we need top line length = 75 + 2 = 77 characters. So we can make top line 77 characters, with corners at positions 1 and 77, interior characters positions 2..76 (75 characters). Good.
+
+Thus we can have top line: `┌─ Pipeline ──────────────────────────────────────────┐`? Let's compute length: "┌" (1), dash (2), space (3), "Pipeline" (8 letters) => after "Pipeline", we have characters at positions: let's index: pos1 = '┌', pos2 = '-', pos3 = ' ', pos4 = 'P', pos5='i', pos6='p', pos7='e', pos8='l', pos9='i', pos10='n', pos11='e', pos12=' ', then we need dashes from pos13 to pos76 (since pos77 = '┐'). So we need 76-13+1 = 64 dashes. Then pos77 = '┐'.
+
+Thus we need 64 dashes after the space following "Pipeline". So the top line would be: "┌- Pipeline " followed by 64 dashes then "┐". That yields interior width 75. That is a long line but okay.
+
+Alternatively we can use simpler: use plain ASCII: "+-- Pipeline --------------------------+". That also defines width.
+
+But the user gave example using box-drawing characters for top edge with title: `┌─ Settings ─────┐`. That uses dash after corner, then space, title, space, then dashes. That matches our approach.
+
+Thus we can adopt that: top line: `┌─ Pipeline ────────────────────────────────────────┐`. But we must ensure exact count. Let's compute using a simpler method: Let's decide interior width maybe 61 (makes top line length 63). But we need diagram width ~75. So maybe we can compress the diagram: we can have each step as a smaller box: maybe we can shrink each step to something like width 9 characters? Then total width maybe ~55. Let's try to compress.
+
+Alternatively we can increase interior width to 85 to fit the diagram comfortably. That would make top line length 87 (85 interior). That's also okay. Choose interior width 85. Then top line length = 87. That seems fine.
+
+We need to generate a top line with 85 interior characters. Let's compute: We need to put title "Pipeline". Title length = 8 characters. Then we need a dash after corner: char2 = '-', then space char3 = ' ', then title characters positions 4-11, then space pos12, then dashes from pos13 to pos86 (since interior width =85, so positions 2..86 inclusive =85 characters). Then pos87 = '┐'.
+
+Thus we need 85 - (positions used by dash, space, title, space) = 85 - (1+1+8+1) = 85 - 11 = 74 dashes. So we need 74 dashes after the space following the title.
+
+Thus top line: "┌- Pipeline " + 74 dashes + "┐". That will be 87 characters total.
+
+Check: Let's compute: "┌" =1, "-"=2, " "=3, "P"=4, "i"=5, "p"=6, "e"=7, "l"=8, "i"=9, "n"=10, "e"=11, " "=12, then we need dashes for positions13..86 (that's 74 characters), then "┐" at 87. Good.
+
+Now interior lines: we need to have left border at column1 "│", then content at columns 2..86 (85 characters), then right border at column 87 "│". So each interior line must be exactly 87 characters: a leading "│", then exactly 85 characters of content, then trailing "│". The bottom line: "└" + 85 dashes + "┘".
+
+Thus we need to construct interior lines with content spaces.
+
+We need to draw inside the pipeline diagram: we need the boxes and arrows. Each box must be a rectangle: we can use box drawing characters as well: top border: maybe "┌─────────┐" but we need to ensure width of that box is less than interior width. Each box maybe width 9 or 11.
+
+But we also need to make sure each interior line length is exactly 85 characters. So we need to count spaces. The diagram will be placed in maybe one line (maybe two lines: one for top border of each box, then a line with icons, then bottom border). But we can also put the icon on same line as box borders.
+
+Given we need to preserve width exactly, we need to carefully calculate spaces. Let's design each step box: width maybe 9 characters for the inner area? Let's think: For each step, we need to show an icon token (like `:code:`) inside the box. The token has length maybe 6 (including colons). Actually ":code:" is 6 characters: colon, c, o, d, e, colon = 6. Then maybe a label like "Code". But maybe we can embed both icon and label inside box: e.g.:
+
+```
+┌─────────┐
+│ :code:  │
+│  Code   │
+└─────────┘
+```
+
+That would be three lines tall for each box: top border, icon line, label line, bottom border. That may be tall. But we can also compress: one line for box top, then line with icon and label separated by spaces, then bottom border. That yields 3 lines per box.
+
+But the arrows between boxes need to be placed at the same vertical position as the boxes. Could have a line between boxes with arrow at same level. Perhaps we can use a single line representation: top border line across all boxes and arrows? Or use a diagram of horizontal arrangement: box top, then next line contains icons and arrows interleaved.
+
+Simplify: We can make each step as a small rectangle of width maybe 9 (including borders). Inside, we can show icon token on one line, maybe label on same line.
+
+One approach: Represent each step as:
+
+```
+┌─────────┐
+│ :code:  │
+│  Code   │
+└─────────┘
+```
+
+Spacing: top border line: "┌─────────┐" - that's 1 + 8 dashes + 1 = 10? Let's count: "┌" + 8 dashes + "┐" = 10 characters. Actually we need to compute exactly: If interior width = 8 characters, then top border length = 8 + 2 = 10. Then side borders lines: "│" + 8 content + "│" = 10.
+
+Thus each box would be width 10. That's fine.
+
+We need arrows between boxes: maybe we can put arrow on the same line as the middle of boxes. Could have a row between the boxes, like:
+
+```
+──►
+```
+
+But maybe we can embed arrows between the boxes on the same row as the icon lines: after each box we place " ──► " (arrow with spaces). That will be inserted between boxes. But we must ensure total width matches interior width.
+
+We could do the following arrangement: Each step box is 10 characters wide, and we have arrows of width maybe 5 (including spaces). Then total width = sum of boxes + arrows = 5 * 10 + 4 * 5 = 50 + 20 = 70. That's less than 85, leaving some padding.
+
+We need to position them centrally within the interior width.
+
+Thus we can create a single row of content: the top border row: we can have something like:
+
+```
+┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+```
+
+But we need arrows between them. Could do:
+
+```
+┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+```
+
+That's one line. Then we need subsequent lines for icons and labels.
+
+But each step box is a rectangle with multiple lines: top border, content lines (maybe 2 lines), bottom border. So we could have 5 boxes each of height 3 lines (including top and bottom). So total height = maybe 5 rows? Actually 3 lines per box, so we need to place them stacked? That would be tall. But we can put them in same vertical position: we can align them horizontally with arrows at the middle row maybe.
+
+But perhaps simpler: Represent each step as a simple box with icon and label on same line: top border: "┌─────────┐", then second line: "│ :code:  │", then third line: "│  Code   │", then bottom border: "└─────────┘". That's 4 lines per box. We can then place arrows to the right of each box on maybe line 2 or 3. But if we place arrows between boxes, they'd be offset.
+
+We could do each step as a small box, but we can place them side by side, but the arrows might need to be placed between them in separate rows.
+
+Alternatively we can represent each step as a simple box with icon and label on one line, like:
+
+```
+┌─────────────┐
+│ :code: Code │
+└─────────────┘
+```
+
+But we need to include both icon and label within the box. But we could embed both: maybe icon on left and label on right. But each box interior width maybe 13 or so.
+
+Simplify: Let's do each step as a simple box that contains icon token on the first line and label on the second line. Use 2-line interior (plus top and bottom border) making each box 4 lines tall.
+
+But the arrows between boxes can be drawn on the line that aligns with the middle of the box (maybe second line). That can be inserted between boxes.
+
+We can do something like:
+
+```
+┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐
+│ :code: │ ──► │ :hammer:│ ──► │ :check:│ ──► │ :rocket:│ ──► │ :activity:│
+│ Code   │      │ Build  │      │ Test   │      │ Deploy │      │ Monitor │
+└────────┘      └────────┘      └────────┘      └────────┘      └────────┘
+```
+
+But need to ensure spacing and width.
+
+But we need each line to be exactly 85 characters. We can pad left and right spaces to centre.
+
+We need to include arrow tokens "──►". Possibly with spaces.
+
+We need to include colon-wrapped icon tokens exactly as they are. Also labels.
+
+Let's define each box interior width: Let's decide width 11 characters inside (including side borders). Then top border = "┌───────────┐" (1 + 11 dashes + 1 = 13). Wait compute: interior width = number of dashes between corners: if we have 11 dashes, then total width = 13.
+
+But we need to consider that interior width is content width (including spaces). So if we put icon token and label inside, need to fit.
+
+Let's try to define each box interior width = maybe 13 characters. Then the total width of box = interior width + 2 = 15. Then we can place them side by side with arrows.
+
+But we also need arrows: they need some width. If we have 5 boxes of width 15 each: total boxes width = 5 * 15 = 75. Then we need 4 arrows of width maybe 5 each (including spaces) => total width = 75 + 4*5 = 95, too large for interior width 85. So we need to reduce box width. Let's reduce to interior width = 9 (so box width = 11). Then 5 * 11 = 55. Then arrows: 4 * 5 = 20 => total 75. That's within 85. Good. So interior width = 9 (so each box width 11). Let's compute again: interior width 9 characters: we need to fit icon token of length 6, plus maybe a space and label of length maybe up to 8. That may not fit. Let's try interior width = 11 (box width = 13). Then 5*13 = 65. Arrows 4*5 =20 => total 85. That's perfect: 5 boxes width 13 each =65, arrows 5 each =20, total =85. That matches interior width exactly. So we can choose interior width = 11. Then each box top border "┌───────────┐" has 11 dashes.
+
+Thus we can design each step box with interior width = 11. Use top border line: "┌───────────┐". Then second line: "│ :code:    │"? Wait interior width 11 includes spaces between the side borders. The content must be exactly 11 characters. For icon token ":code:" is 6 characters, we can pad with spaces to fill 11. For example, we can do "│ :code:   │". That's 1 space then ":code:" then 3 spaces? Let's count: after side border, we have 11 characters. Let's fill with something like " :code:   " (leading space then icon then spaces). But need exactly 11. We'll design each line accordingly.
+
+We also need a label line, maybe "│  Code    │". That's also 11 characters.
+
+We need bottom border: "└───────────┘".
+
+Thus each box occupies 4 lines (top, icon line, label line, bottom). The arrows can be placed between boxes on the middle lines (icon line and label line) maybe with same row. But we need to ensure arrows are placed on same row across all boxes.
+
+We can do something like: The icon line includes boxes and arrows: after each box's icon line, we place " ──► " then the next box's icon line. Similarly for label line.
+
+Thus the icon line would look like:
+
+```
+│ :code:    │ ──► │ :hammer:  │ ──► │ :check:  │ ──► │ :rocket:  │ ──► │ :activity:│
+```
+
+But note the interior width for each box is 11. But we need to check the content: we need to put icon token and maybe spaces. For box 1: content line could be " :code:   " (that's 1 space + 6 token + 4 spaces = 11?). Let's compute: 1+6+4 = 11. Yes. So we can do " :code:   ". That fits 11. For box 2, icon maybe ":hammer:" (7 characters? Actually ":hammer:" is 7 letters? Let's count: colon (1), h (2), a(3), m(4), m(5), e(6), r(7), colon (8). Wait "hammer" has 6 letters, plus colon at both ends = 8 characters. So ":hammer:" is 8 characters. That is longer. So interior width maybe need to be bigger. Actually let's see: we want each box interior width 11. For icon :hammer: length 8, we can have " :hammer:  " (space +8 +2 spaces = 11? Actually space +8 +2 spaces = 11? That yields 1+8+2=11. Yes. So we can put that. So for each box we need to adjust spaces accordingly.
+
+But the token lengths vary: :code: (6), :hammer: (8), :check: (6?), Actually :check: is maybe 6? Let's check: "check" is 5 letters, plus colon both ends =7? Wait colon then "check" then colon = 1+5+1 =7. Actually colon counts as one each. So :check: = 7 characters. Wait check letters =5, plus colon =2 => 7. So it's 7. :rocket: = 7? Let's check: "rocket" =6 letters +2 =8. So :rocket: is 8. :activity: is 8? "activity" =8 letters +2 =10. So token lengths vary.
+
+Thus need to adapt each line accordingly. That's okay: we can adjust spaces accordingly.
+
+We also need label lines: we can use " Code " maybe with spaces. But need to ensure length = 11. For label "Code", length 4, we can pad with spaces: maybe "  Code   " (2 spaces +4 +3 spaces =9? Let's count: 2+4+3 =9. Not enough. Need 11. So maybe "   Code   " (3+4+4 =11). That's 3 spaces before, 4 letters, 4 spaces after = 11. So we can do "   Code   ". For "Build" length 5, we can do "  Build   " (2+5+4 =11). That fits. For "Test", length 4: "   Test    " (3+4+4 =11). For "Deploy", length 6: "  Deploy   " (2+6+3 =11). For "Monitor", length 7: "  Monitor  " (2+7+2=11). That works.
+
+Thus we can make each box interior lines accordingly.
+
+Now arrows: we need "──►" maybe preceded and followed by spaces. Let's decide arrow representation: " ──► ". That's space, two dashes, right arrow, space. That's 5 characters: space (1), dash (2), dash (3), arrow (4), space (5). We can also do " ──► " between boxes. That's fine.
+
+Thus final arrangement for icon line:
+
+- Box1 interior content: " :code:   " (positions 2..12 maybe?) plus side borders.
+
+- Then arrow: " ──► "
+
+- Then Box2 interior: " :hammer:  " (space + 8 + 2 spaces =11). Wait we need 11 characters. Let's count: space +8 +2 =11. So " :hammer:  " (that's 1+8+2=11). Good.
+
+- Then arrow
+
+- Box3 interior: " :check:   " (space +7 +3 =11). Good.
+
+- Arrow
+
+- Box4 interior: " :rocket:  " (space+8+2=11). Good.
+
+- Arrow
+
+- Box5 interior: " :activity:"? Wait need 11 characters. Let's check token length: :activity: = 10 characters (8 letters +2 colons?). Actually "activity" is 8 letters, plus colon both ends = 10. So we need 1+10+? = 11? That's 1+10 = 11. So we can do " :activity:" (space +10 = 11). That yields exactly 11 characters. But need colon at end, so after space we put ":activity:" and that's it. That yields total 1+10 = 11. Good. So we can use " :activity:" (that's space + 10 = 11). That fits.
+
+Thus final icon line: we need to put side borders at beginning and end: at start of line we have left side border "│", then content of first box, then right side border "│", then arrow, etc.
+
+But we also need to have side borders for each box? The side borders are only at the outermost left and right of the entire interior, not per box. The diagram inside the screen is drawn as content inside the interior of the screen. The screen interior is bounded by left and right side borders: each interior row begins with "│" and ends with "│". Within that interior, we can place the boxes and arrows. So we shouldn't have a "│" for each box; we only need one set of side borders for the whole screen. So we can have a line like:
+
+```
+│ ┌───────────┐ ──► ┌───────────┐ ──► ┌───────────┐ ──► ┌───────────┐ ──► ┌───────────┐ │
+```
+
+But that uses "│" at beginning and end of the interior line, which is the screen's side borders. Within that we embed the boxes.
+
+But note we need to have a left border (the screen's side border) and then content, then right border.
+
+Thus for each row we must have exactly one "│" at column 2 (the left side border) and one "│" at column 86 (the right side border). Actually we have interior width 85, so left border at col1? Wait we said top line is "┌...┐". Then interior rows start with "│" at column 1? Let's reconsider coordinate: The top line begins with "┌". The left side border for interior rows should be at column 1 (character position 1) also? Let's see: In a rectangle with corners, the left side border is also a "│" in each interior line. The top border uses "┌" at start, then "─" for interior, then "┐". Similarly bottom border uses "└" and "┘". For interior lines, we use "│" at start and end. So we have leftmost column as side border. So interior row will start with "│". Then content positions 2..86 (85 characters). Then end with "│" at position 87.
+
+Thus each interior row begins with "│" and ends with "│". So we should place our boxes inside these positions.
+
+Thus we need to craft each interior row to have "│" at start and end.
+
+Hence for top border row we have "┌─ Pipeline ...┐". Then we have interior rows. For each interior row, we need to start with "│", then include the content, then "│". So we must embed the boxes and arrows within that 85-character content area.
+
+Thus we need to generate rows like:
+
+Row1: top border: "┌─ Pipeline ...". That's already defined.
+
+Row2: maybe a blank line (just side borders). Actually we might want some spacing above and below the diagram. We can have a blank row: "│" + 85 spaces + "│". That is row2.
+
+Row3: perhaps the top border of the boxes. Could also embed boxes in one row: "│ ┌───────────┐ ┌───────────┐ ... │". But we need to include side borders at both ends. So we need to include leading "│ " (that's "│" then space). Actually after the left border we need a space to separate from box. But we can also start directly with the box: the left side border is "│", then the box begins. But that would place the left border adjacent to the box's leftmost character. That's okay. However we need to ensure content length exactly 85 characters. So we need to count precisely.
+
+Thus design each interior row.
+
+We have interior width =85. Let's call content area length =85. The left border "│" occupies column1, then columns2-86 are content, column87 is right border "│".
+
+Thus we need to construct content of length exactly 85 characters.
+
+We need to embed the 5 boxes each width =13 characters (including the left and right border of the box?). Wait we are constructing boxes inside the content area. The boxes themselves have left and right border characters (like "┌" and "┐", "│" and "│", "└" and "┘"). Those are part of the content. So each box occupies characters in the content area. So we need to consider the width of each box as part of content length.
+
+We said each box width =13 characters (including its own borders). Actually earlier we said interior width = 11, top border uses 13? Let's recompute: We said we want interior width (the area inside side borders of box) = 11 characters. The box's overall width (including its left and right border characters) = interior width + 2 = 13. Because each box border uses "┌" and "┐" for top and bottom, and "│" for sides. So the top border of a box is "┌" + 11 dashes + "┐". That's 13 characters. Then side lines: "│" + 11 content characters + "│". Also 13. Bottom border: "└" + 11 dashes + "┘". Also 13.
+
+Thus each box is width 13.
+
+Now we have 5 boxes, each width 13 = 65 characters. We have 4 arrows, each width maybe 5 characters: " ──► ". That's 5. So total width = 65 + 4*5 = 65 + 20 = 85. Perfect! That exactly matches interior width of 85. Great! So we can arrange boxes and arrows exactly fill the interior width, no extra spaces needed. So content area can be exactly:
+
+Box1 (13) + arrow (5) + Box2 (13) + arrow (5) + Box3 (13) + arrow (5) + Box4 (13) + arrow (5) + Box5 (13) = 85.
+
+Thus we can place them directly adjacent with no extra spaces. However, maybe we need spaces between the arrow and the boxes? But the arrow representation " ──► " includes leading space and trailing space. So that yields a space after left border of arrow and before right border. That's fine. We need to ensure that after the previous box's right border "│" we have a space then arrow then space then next box left border? Wait the box's right border is "│". Then we have arrow content. But we must ensure content positions: after Box1's rightmost character (which is "│" of the box), we need to place arrow. However, arrow representation begins with a space. So we can have "│" (end of box) + " ──► " (arrow) that yields a space after the box's "│". That seems fine.
+
+But careful: In the content area, we will have the entire sequence: starting with left border of box: maybe the first box's left border "┌"? Actually the top border of the boxes will be drawn on separate rows. For the rows that depict the top border of boxes, we will have "┌───────────┐ ──► ┌───────────┐ ──► ...". This will be the top border row for the diagram. Similarly for the second row (icon line), third row (label line), fourth row (bottom border). Then we have maybe a blank row after.
+
+Thus we can design four interior rows for the diagram: row with top borders of boxes, row with icons and arrows, row with labels and arrows, row with bottom borders of boxes. Then perhaps a blank row after. Then bottom border of screen.
+
+We also need maybe a row for title? Already have top border of screen with title.
+
+Thus the screen has:
+
+- Row0: top border: "┌─ Pipeline ─...┐".
+
+- Row1: maybe blank? Could put something else. We can skip blank row to keep close. But perhaps add one blank row for spacing above and below. The guidelines: "Leave a blank line between elements when you can; spacing is preserved 1:1." So we can add a blank row inside screen between title and diagram.
+
+- Then rows 2-5: the diagram boxes (top, icon, label, bottom). That is four rows.
+
+- Then row6: maybe blank row.
+
+- Row7: bottom border: "└─...┘".
+
+But we need to check width consistency: Each interior row must have exactly 85 characters content. So need to make sure each line exactly matches.
+
+Thus we need to generate row content:
+
+Define a box: For each step, we have the following 4 lines (in the diagram):
+
+- Top border: "┌───────────┐" (that's 13 characters). Should be exactly 13, not including side borders. We'll embed that in content.
+
+- Icon line: "│ :code:   │". Actually we need to have the interior content of length 11, but also side borders of box: we need to include the "│" at both ends. But note: we already have side borders for the screen at each end of row; we cannot embed extra "│" inside that would be ambiguous. Actually the boxes themselves have side borders that are also "│". So we need to decide: The content area includes the entire box, including its left and right border characters. So inside the content we will have characters like "┌", "─", "┐", "│", "└", "┘". So the content will have its own "│" characters. That's fine. The screen's side border characters are separate.
+
+Thus for each interior row, we will have the screen side border "│" at start and end. Then between them we place the series of boxes and arrows.
+
+Thus we must generate content where each box appears in each row as described.
+
+Therefore row for top border of boxes: It will be:
+
+- Starting at content start: "┌───────────┐" (13 chars)
+- Then arrow " ──► " (5)
+- Then next box: "┌───────────┐" (13)
+- Arrow, etc.
+
+Thus total content length = 13*5 + 5*4 = 65+20=85.
+
+Now the icon line: For each box we need side borders: "│ :code:   │". That's 13 characters: left border "│", interior content 11 characters (including spaces and token), right border "│". Indeed: "│" + 11 interior + "│" = 13. Good.
+
+Then arrow again: " ──► " (5). Then next box side line.
+
+Similarly for label line.
+
+And bottom border: "└───────────┘".
+
+Thus exactly fits.
+
+Thus we need to generate for each step: a box with label.
+
+Now we need to choose icons for each step: we want icons for code, build, test, deploy, monitor. We need to use Lucide icon names between colons.
+
+We can pick: :code: for code, :hammer: for build, :check: for test, :rocket: for deploy, :activity: for monitor. The list of icons includes "rocket". "code" is a Lucide icon (maybe). "hammer" might be "hammer". "check" maybe "check". Actually we can use "check-circle"? But we can just use "check". We'll use those.
+
+Thus label text: for code: "Code". For build: "Build". For test: "Test". For deploy: "Deploy". For monitor: "Monitor".
+
+Now need to adjust interior content lengths: For each box's interior content for icon line: we have token + spaces. The interior content length must be 11 characters. We need to calculate exact string for each.
+
+- For code: token ":code:" length = 6. So interior = maybe " :code:   " (space + token + 3 spaces). Let's count: space (1) +6 +3 =10? Actually we need 11 characters interior. Let's compute exactly: we need 11 characters. We can put token at positions 2..7 maybe, then pad rest. For example " :code:    " (space +6+4 spaces = 11?). Actually 1+6+4=11, yes. That yields " :code:    ". That's space, colon, code, colon, then 4 spaces. Let's count characters: positions: 1: space, 2: colon, 3: c, 4: o, 5: d, 6: e, 7: colon, then spaces at positions 8,9,10,11 = 4 spaces. So total 11. That is " :code:    ". Wait we have 1+6+4 =11. So that works.
+
+- For build: token ":hammer:" length = 8. Then interior: we need 11 chars. We can do " :hammer:  " (space +8+2 spaces = 11). Yes. That yields space + 8 token +2 spaces.
+
+- For test: token ":check:" length = 7. Then interior: " :check:   " (space+7+3 spaces =11). Yes.
+
+- For deploy: token ":rocket:" length = 8. Then interior: " :rocket:  " (space+8+2 =11). Yes.
+
+- For monitor: token ":activity:" length = 10. Then interior: " :activity:" (space +10 =11). That's exactly 11. Good.
+
+Thus we can use these.
+
+Now label line interior content: label strings padded to length 11.
+
+- Code: label "Code" length 4. Use "   Code   " (3+4+4 =11). That's three spaces before and four after. Let's check: "   Code   " has 3 spaces, "Code" (4), 3 spaces? Wait we need 11 characters. Let's compute: we want 11 characters. If we put 3 spaces before, then "Code" (4), then 4 spaces after => total 3+4+4 = 11. Yes. So "   Code   " yields 3 spaces, "Code", 4 spaces. That's correct. Let's count: characters: positions 1-3 spaces, 4-7 letters C,o,d,e, positions 8-11 spaces (4). So total 11. Good.
+
+- Build: label "Build" length 5. Use "  Build   " (2+5+4 =11). That's 2 spaces before, "Build", 4 spaces after. That yields 2+5+4 = 11.
+
+- Test: label "Test" length 4. Use "   Test    " (3+4+4 =11). That's 3 spaces before, "Test", 4 after. But that's 3+4+4=11. However note we need exactly 11, we need to ensure count: we have 3 spaces, then "Test" (4), then 4 spaces = total 11. Yes.
+
+- Deploy: label "Deploy" length 6. Use "  Deploy   " (2+6+3 = 11). That's 2 spaces before, "Deploy", 3 after.
+
+- Monitor: label "Monitor" length 7. Use "  Monitor  " (2+7+2 = 11). That's 2 spaces before, "Monitor", 2 after.
+
+Thus we have label lines.
+
+Now for each row we need to embed these interior lines for each box and also the arrows. The arrow we use " ──► " which is 5 characters: a space, two dashes, a right arrow, and a space. We need to ensure it's exactly that.
+
+Thus for each row we will place boxes and arrows sequentially.
+
+Now we must assemble full screen.
+
+Let's define screen top border: "┌─ Pipeline ───────────────────────────────────────────┐". We need to compute exact number of dashes. Let's calculate interior width: 85 characters. Then we need the top border with title: "┌- Pipeline " + some dashes + "┐". That's left corner "┌", dash, space, "Pipeline", space, dashes, right corner "┐". The interior part after "Pipeline " is dashes to fill interior width - (the characters before the dashes). The characters before dashes: we have "┌" (1), "-" (2), " " (3), "Pipeline" (8) = 11, " " (space) = 12. So after that we need interior width - 12 dashes. Since interior width = 85, we need 85-12 = 73 dashes. Then right corner at end.
+
+Thus top border = "┌- Pipeline " + 73 dashes + "┐". Let's verify total length: 1 (┌) +1 (-) +1 (space) +8 (Pipeline) +1 (space) +73 (dashes) +1 (┐) = 84? Wait compute: 1+1+1+8+1+73+1 = 84? That's 84. But we need total length = interior width + 2 = 85+2 =87? Wait we said interior width =85. The top border line includes corners, so total length = interior width + 2 = 87. But our current length is 84. Let's recalc: Actually interior width is the number of characters between the corners, i.e., the number of characters in the line after the first corner and before the last corner. That includes dash after corner, space, title, space, dashes. Let's recalc properly.
+
+We want the total number of characters in the top border line to be exactly interior width + 2 = 87. That includes both corner characters at start and end. The interior width (the content area) is 85. So the line length = 87.
+
+Our line currently: "┌- Pipeline " + dashes + "┐". The "┌" is column1, then we have "-", then space, then "Pipeline", then space, then some dashes, then "┐". So the number of characters between the corners (i.e., interior part) = the characters after "┌" and before "┐". That's "-", space, "Pipeline", space, dashes. That's 1 + 1 + 8 + 1 + D = 11 + D, where D = number of dashes. The interior width should be 85. So we need 11 + D =85 => D = 74. That yields dashes =74. Then total length = 1 (┌) + 11 + D +1 (┐) = 1+11+74+1 = 87. Yes. So D = 74 dashes.
+
+Thus we need 74 dashes after the space following "Pipeline". Let's compute: we have "┌- Pipeline " + 74 dashes + "┐". That yields interior length = 1 (dash) +1 (space) +8+1 (space) +74 = 85. Yes.
+
+Thus top border: "┌- Pipeline " + 74 dashes + "┐". Let's count to be sure: The string "┌- Pipeline " is length? Let's count characters: "┌" (1), "-" (2), " " (3), "P"(4),"i"(5),"p"(6),"e"(7),"l"(8),"i"(9),"n"(10),"e"(11), " "(12). That's 12 characters before dashes. Then we need 74 dashes. Then final "┐". So total length = 12+74+1 =87. Good.
+
+Thus we can produce top border: `┌- Pipeline ──────────────────────────────────────────┐`. Let's count dashes in that string: we need 74 dashes. The example string above might not have exactly 74. Let's manually count. I'll write a line with 74 dashes.
+
+We need to ensure we have exactly 74 dashes in the top border. We'll need to count them.
+
+We'll generate top border with exactly 74 dashes: Let's produce something like:
+
+`┌- Pipeline ───────────────────────────────────────────┐`
+
+We need to count dashes. Let's count: The pattern "
+</think>

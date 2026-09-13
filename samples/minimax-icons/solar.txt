@@ -1,0 +1,6 @@
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+  Sun     Mercury     Venus     Earth     Jupiter

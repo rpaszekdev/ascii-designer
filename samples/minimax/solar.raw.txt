@@ -1,0 +1,1201 @@
+<think>
+We need to output an ASCII drawing of the solar system, with orbits, planets of different sizes, and a comet with a tail. The drawing should be within 60-90 characters wide and up to 40 lines. Use box-drawing, arrows, slashes, unicode, any characters. Do not verify line lengths, just draw immediately. Output ONLY the drawing inside one code block, no explanation.
+
+So we need to produce ASCII art, within those limits. I should ensure the drawing is about perhaps 70 characters wide and maybe ~20 lines high. Use appropriate characters: maybe " O " for Sun, " o " for planets, orbit lines like "-" or ")" or "o" or arcs. The comet with a tail can be drawn as a small circle with lines trailing behind, like " * " tail. Use Unicode characters: maybe "☀", "☉", "☾", etc. But we must stay within ASCII/Unicode allowed. We must output only the code block.
+
+We need to ensure the drawing is within 60-90 characters wide. So we need to count characters. Let's decide a width of maybe 70 characters. And we need up to 40 lines. Let's make maybe 20 lines.
+
+Plan: Draw concentric circles for orbits: using characters like '-' or '.' for orbit lines. The Sun at center.
+
+We could also use box-drawing characters like "─", "│", "┼", "┐", etc. But easier: use parentheses like ( ) or slashes / \.
+
+I'll aim for a drawing like:
+
+               (   )   // orbit lines
+           (   )   (   )   // planets
+But better to use arcs.
+
+Let's decide a central Sun: " ☼ " maybe "☀". Use unicode: "☀". Then orbit rings: like
+
+          ______
+       __/      \__
+      /            \
+      \            /
+       \__      __/
+          ______
+
+But that is too complex. Simpler: concentric circles using '.'.
+
+Let's try to make 5 orbits: Mercury, Venus, Earth, Mars, Jupiter maybe. Use planets as characters: Mercury: "•", Venus: "o", Earth: "O", Mars: "*", Jupiter: "J". Each placed on their orbit arcs.
+
+Add a comet with a tail: maybe drawn on top right, trailing to left: "~>" maybe.
+
+Ok let's craft.
+
+We'll have a central sun: " ☀ " at row maybe line 9.
+
+We'll draw 5 orbit circles:
+
+- orbit1 radius small: maybe represented by '.' at 4 positions around.
+- orbit2 radius slightly bigger, and so on.
+
+Better to use ASCII art with arcs. For each orbit, we could write two arcs: top and bottom, with dashes.
+
+Simplify: Represent orbits as '----' horizontally, and maybe vertical lines.
+
+Simplify: Represent orbits as approximate ellipses using characters like '-', '\', '/' for arcs.
+
+Better: Use a typical ASCII representation:
+
+                .--.
+               (    )
+                '--'
+
+But we need many orbits.
+
+Alternate: Use code block with a pre-drawn ASCII art known from internet? But we need to produce new.
+
+We can make each orbit as a pair of parentheses like:
+
+   (   )
+  (     )
+ (       )
+(         )
+ (       )
+  (     )
+   (   )
+
+That's a circle approximated by parentheses. But we need multiple concentric such.
+
+We can do:
+
+              (       )
+            (         )
+          (   ( ☀ )   )
+            (         )
+              (       )
+
+But that draws only one orbit.
+
+Alternatively, we can produce a simpler diagram: central sun then ellipses drawn with ' - ' for horizontal segments, and maybe '/' and '\' for corners.
+
+I'll aim for a "top-down" view with orbits drawn as circles using characters:
+
+We can represent each orbit as a set of four arcs: top, bottom, left, right. Use '/', '\', '-', '|'.
+
+Simplify: use '.' for orbit path: not needed.
+
+Given constraints, maybe we can produce a drawing like:
+
+            .---.
+          .'     '.
+         (    ☀    )
+          '.     .'
+            '---'
+
+That's just one orbit.
+
+Let's make multiple orbits:
+
+         .---.
+       .'     '.
+      (   ☀   )
+       '.   .'
+         '---'
+
+Then a second outer orbit:
+
+        .-------.
+      .'         '.
+     /             \
+    (      ☀        )
+     \             /
+      '.         .'
+        '-------'
+
+But that includes multiple lines, we need to incorporate planets.
+
+Better to create a diagram with central Sun, orbits drawn as dashed lines (---) and vertical bars (|). Use box drawing characters: "─", "│", "┌", "┐", "└", "┘". Use those for circles.
+
+E.g., for each orbit we can use "┌───────┐" top, "│       │" sides, "└───────┘" bottom. Then combine concentric.
+
+Maybe we can use "╭───────╮", "│       │", "╰───────╯". That's a nice representation.
+
+We can produce:
+
+                ╭───────╮
+              ╭─│       │─╮
+             │  │   ☀   │  │
+              ╰─│       │─╯
+                ╰───────╯
+
+That's one orbit.
+
+Add outer orbit:
+
+                ╭─────────────╮
+          ╭─────│             │─────╮
+         │     │   ╭───────╮   │     │
+         │     │  ╭│       │╮  │     │
+         │     │  ││   ☀   ││  │     │
+         │     │  ╰│       │╯  │     │
+         │     │   ╰───────╯   │     │
+          ╰─────│             │─────╯
+                ╰─────────────╯
+
+That's two orbits. However we need to embed planets on each orbit.
+
+We can place a small character on the orbit lines.
+
+One way: after drawing orbit arcs, we place planet characters at positions.
+
+Better to manually place them.
+
+Alternatively, produce a simpler ASCII: Represent orbits as circles formed by characters: using 'O' for orbit line maybe.
+
+I think we can produce something like:
+
+               .---.
+            .-'     '-.
+          .'    ☀     '.
+         /              \
+        |    .-.         |
+        |   (   )        |
+        |    '-'         |
+         \              /
+          '.         .'
+            '-.   .-'
+               '---'
+
+That's a single orbit.
+
+But we need multiple.
+
+Alternate: use "-----" and vertical lines: Let's try to draw orbits as ovals:
+
+         -----
+       /       \
+      (    ☀    )
+       \       /
+         -----
+
+But that also one.
+
+Alright, let's design a system:
+
+- Use central Sun: " ☀ " at (row around 10, col around 35). Use ascii.
+
+- Orbits: four concentric ellipses approximated by lines:
+
+Orbit1: small: radius 4 characters (like: "(_)").
+
+Orbit2: radius 8.
+
+Orbit3: radius 12.
+
+Orbit4: radius 16.
+
+We can draw each as four arcs: top: "/---...", left: "|", right: "|", bottom: "\---..."
+
+Better to create a simple representation: Use characters '-' for horizontal arcs, and '/' for top-left, '\' for top-right, and similarly for bottom.
+
+Let's do one orbit at radius R: top arc: a series of '/' then '-' then '\' maybe. But elliptical.
+
+Simplify: Represent orbits as circles formed by ASCII characters:
+
+Use something like:
+
+      .-------.
+    .'         '.
+   /             \
+  (               )
+   \             /
+    '.         .'
+      '-------'
+
+That's a circle. Use that for each orbit, just adjust size.
+
+We can manually draw four of those, each bigger.
+
+We can embed planets on each orbit as characters placed on the arcs.
+
+Now, need to keep width ~70. Let's design each orbit as ~10-12 characters wider than previous.
+
+Orbit 1: radius 5: representation: something like:
+
+      .---.
+    .'     '.
+   (   ☀   )
+    '.   .'
+      '---'
+
+That's 7x5 maybe.
+
+Orbit2 bigger: maybe use more characters:
+
+        .-------.
+      .'         '.
+     /             \
+    (               )
+     \             /
+      '.         .'
+        '-------'
+
+That's about 13 wide.
+
+Orbit3 bigger: maybe 19 wide.
+
+Orbit4 bigger: 25.
+
+Then embed planets:
+
+- Mercury: on orbit1: place small '·' maybe.
+- Venus: on orbit2: 'o'.
+- Earth: on orbit3: 'O'.
+- Mars: on orbit3 maybe.
+- Jupiter: on orbit4: 'J'.
+
+Add a comet with a tail: maybe drawn near top right, with tail trailing leftwards: "* ->".
+
+Let's make it.
+
+We need to stay within ~70 width. Let's decide width maybe 71 characters. We'll align center around column 35. We'll draw four concentric circles, each on separate lines. The central Sun is inside innermost circle.
+
+We'll need to use many lines to draw each orbit fully, but we can use repeated arcs: each orbit is drawn as separate "slice" lines. But it's simpler: just draw each orbit as multiple lines in the whole picture.
+
+Simplify: Represent the entire diagram in a grid of about 25 lines, each line containing parts of each orbit. That is complex.
+
+Alternatively, use a simpler stylized diagram: central Sun, and elliptical orbits drawn with characters like '-' and '|' and corners, with planet markers placed at approximate positions.
+
+Given constraints, the user expects a drawing, not strict correctness. So we can produce something like:
+
+```
+          .--.           .--.
+        .'  o '.       .'  O  '.
+       /        \     /        \
+      (    ☀     )   (    *    )
+       \        /     \        /
+        '.  .'         '.  .'
+          '--'           '--'
+```
+
+But that's not exactly orbits.
+
+We need to include a comet with a tail.
+
+Maybe use the "box drawing" style: 
+
+```
+         ╭──────────────╮
+        ╭╯  .-------.   ╰╮
+       ╭╯   |   ☀   |   ╰╮
+      ╭╯    '._     _.'    ╰╮
+      │    .'  '.---'  '.   │
+      │   /    /         \  │
+      │  (    (   ◐  )    ) │
+      │   \    \         /  │
+      │    '.  '-.___.-'  .'│
+      ╰╮    '._     _.'    ╭╯
+       ╰╮    '---'       ╭╯
+        ╰╮               ╭╯
+         ╰──────────────╯
+```
+
+But that's messy.
+
+The easiest approach: Use "ASCII art" style from typical representation: Sun at center, orbits as ellipses, each orbit line drawn with characters '-', and planets as small letters. Then add comet tail.
+
+We'll produce something like:
+
+```
+          .---.
+        .'     '.
+       /   ☀   \
+      |         |
+       \       /
+        '.   .'
+          '---'
+
+         .-''''-.
+       .'        '.
+      /            \
+     (     o        )
+      \            /
+       '.        .'
+         '-....-'
+
+           .-''''''-.
+         .'          '.
+        /              \
+       (      O         )
+        \              /
+         '.          .'
+           '-......'
+
+             .-''''''''-.
+           .'            '.
+          /                \
+         (        *          )
+          \                /
+           '.            .'
+             '-........'
+
+Comet:  ~~> *
+```
+
+But need to embed planets on each orbit. Let's restructure.
+
+Plan: Represent each orbit as a series of arcs:
+
+- Innermost orbit (Mercury): small circle radius maybe 2.
+
+- Next orbit (Venus): slightly bigger.
+
+- Next (Earth), then (Mars), then (Jupiter). Provide 5 orbits.
+
+We need to embed planets at some positions. Could label them as characters on the orbit line.
+
+Simplify: Represent orbits as circles drawn with characters like '-' and '/', and each orbit drawn on its own separate group of lines, not overlapping. That is easier: we can draw each orbit as a separate circle, but they will be nested: we draw outermost first, then next, etc. Actually nested circles can be drawn as separate lines in same picture.
+
+But we can combine them: draw outer circle, then inner circle inside, but then overlapping. However it's possible to draw nested circles using characters like:
+
+```
+  .- - - - - - - .
+ /                 \
+|      .- - - .      |
+|     /       \     |
+|    |    ☀    |    |
+|     \       /     |
+|      '- - -'      |
+ \                 /
+  '- - - - - - -'
+```
+
+But that's messy.
+
+Alternatively, we can use simple representation: Draw each orbit as two horizontal lines (top and bottom), and left and right as vertical lines approximated. Use box drawing characters to get cleaner.
+
+We can use:
+
+- Top arc: "┌──────┐"
+- Side arcs: "│      │"
+- Bottom arc: "└──────┘"
+
+We can nest them: outermost uses large width, then inner uses smaller.
+
+We can embed planets on the sides: maybe place planet characters on the side lines at appropriate positions.
+
+Let's do that: Use box-drawing characters: "┌", "─", "┐", "│", "└", "┘".
+
+Define outermost orbit (Jupiter): size maybe width 61? That may exceed 90. We need width ~60-90. Let's aim width 61 characters for outermost, inner smaller.
+
+We can have 4 orbits: width 61, 45, 29, 13 maybe.
+
+We'll need vertical spacing: top arc at some row, side arcs at next rows, bottom arc at bottom row. For each orbit we need multiple rows for sides. We can draw all orbits in the same picture: outermost at top and bottom, then inner.
+
+But it's easier to draw each orbit as separate groups of lines, not overlapping? Actually they will overlap if nested. But we can draw each orbit in separate line groups: outermost as top line of outermost arcs, then inner arcs inside, then inner arcs inside that.
+
+We can draw the outermost orbit as top line: "┌─────────────────────────────────────────────┐". Then side lines: "│" at left and right with spaces. Then bottom line. That will be huge and take many lines.
+
+But we need to keep within ~40 lines. So we can allocate maybe 5 lines for each orbit: top, two side rows, bottom. That's 5 lines per orbit, 5 orbits => 25 lines, fine.
+
+So we can draw each orbit as a rectangular box using box drawing characters: top and bottom as "┌──────┐" etc, sides as "│". Then embed planets on side lines.
+
+We can nest them: Draw outermost rectangle, then inside that draw next rectangle, etc. That yields nested boxes.
+
+E.g.:
+
+Line1: outer top: "┌─────────────────────────────────────────────┐"
+Line2: outer side left: "│ ┌─────────────────────────────────────┐ │"
+Line3: outer side left: "│ │ ┌───────────────────────────────┐ │ │"
+Line4: "│ │ │      ☀                     │ │ │"
+...
+But this is messy.
+
+Simplify: Use nested boxes but each offset by 2 spaces on each side. This yields a series of nested rectangles. Then place planets on side lines. The Sun at center.
+
+So, let's define:
+
+- Outer box (Jupiter) width maybe 61 chars. Height maybe 13 lines? But that may be too tall.
+
+But we can compress: Use just 3 rows for each orbit: top, middle (with side lines), bottom. That's 3 lines per orbit, plus maybe central rows for sun. 5 orbits => ~15 lines, okay.
+
+Let's define width of each orbit as decreasing by 8 characters each level. Starting with width 61, then 53, then 45, then 37, then 29. That will fit in 61 width (plus corners). That yields 5 orbits.
+
+But we must ensure overall width <=90. 61 is okay. Let's verify: 61 characters for outermost line includes corners.
+
+Now we need to place planets on side lines. At each orbit's side lines, we can place a planet character at some offset. The side lines are just vertical line characters '│' at left and right edges of each box.
+
+We can place a planet character inside the side line, e.g., "│o" but need to place at some column between left and right edges. Actually inside the box there will be interior spaces; we can place a planet somewhere on the side line or in interior.
+
+But we can put planets on the middle of side lines, like at the halfway point horizontally inside the interior.
+
+Alternatively, we can embed planet characters on the orbit itself: i.e., on the top or bottom arcs. For example, we can add a planet symbol on the top arc.
+
+Simplify: Place each planet on the right side of the middle side line, maybe as a character in the interior.
+
+We can write side lines like: "│   Mercury   │". But we need width for each orbit. Let's design each orbit as a rectangle with label of planet on the right side. That's okay.
+
+We'll have central Sun at center of innermost rectangle.
+
+Let's design:
+
+- Outermost rectangle (Jupiter) width 61, height maybe 13 rows.
+
+- Next (Saturn) maybe not needed; we have Mercury, Venus, Earth, Mars, Jupiter. That's 5 planets.
+
+We can use 5 nested rectangles: Mercury (innermost), Venus, Earth, Mars, Jupiter (outermost). Actually we can include more planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn maybe, but we can limit to 5.
+
+We need also a comet with a tail. That can be drawn somewhere outside or inside? Probably outside, maybe at top right of drawing.
+
+We need to fit within 40 lines. Let's design each rectangle with height = width/4? Not necessary; we can compress height.
+
+We could have each rectangle drawn as 3 lines: top, middle (containing side lines), bottom. That would be too small to contain inner rectangles: If we have outer rectangle drawn as top, middle, bottom lines only, there is no interior space for inner rectangle except maybe in the middle line, but we need interior for inner rectangle's vertical space.
+
+So we need each rectangle to have multiple side lines to allow nesting.
+
+Thus for each rectangle we need top line, then several side lines, then bottom line. The number of side lines must be enough to fit inner rectangles.
+
+Simplify: Use a set of nested rectangles each with height maybe 2*depth+1. For 5 nested rectangles, the outermost height maybe 11 lines (i.e., 5 pairs of side lines plus top and bottom). Let's calculate: For depth d (1-indexed innermost), we need height = 2*d+1 maybe. For d=5, height = 2*5+1 = 11. That fits within 40 lines.
+
+Let's do 5 levels: Mercury depth 1, Venus depth 2, Earth depth 3, Mars depth 4, Jupiter depth 5. Height = 11 lines.
+
+We need to construct each level:
+
+- Level 5 (outermost) height 11: top line line 1, side lines lines 2-10, bottom line line 11.
+
+- Level 4 inside that: top line line 2? Actually inside the outer rectangle, we need to start at line 2 (after top line), and then side lines for inner rectangle, bottom line before outer bottom.
+
+Thus we can embed rectangles as nested. That is doable.
+
+Let's define width of outermost rectangle: 61 characters, plus corners: characters: "┌" then 59 dashes then "┐". That yields width 61. Then side lines: "│" at left and right edges, and spaces in between.
+
+We need to place inner rectangle's top at line offset 2 from outer top, side lines accordingly, bottom at offset 2 from outer bottom.
+
+We can then embed planets at each level on side lines, maybe at the right side near the middle.
+
+We also need central Sun at innermost rectangle: placed at the middle line of the innermost rectangle.
+
+We also need a comet with a tail. We can draw that outside the outermost rectangle, maybe at top right. Or we can embed it in the outermost rectangle's side lines maybe? But easier to draw outside: after drawing the solar system, we can add a line with a comet shape.
+
+The drawing should be within 60-90 characters width. Our outermost rectangle width 61, plus perhaps extra characters for comet tail outside that might push beyond 61? We can keep within 70 maybe.
+
+We must ensure the entire picture fits within the width limit of maybe 80 characters.
+
+Ok, let's design the nested rectangles.
+
+We need to define characters: We'll use box-drawing characters: "┌" "─" "┐" "│" "└" "┘". Use these.
+
+Define outermost (Jupiter) width 61, height 11. Let's compute coordinates.
+
+Line1: top: "┌" + 59 "─" + "┐". That's 61 characters.
+
+Lines2-10: side: "│" + 59 spaces + "│". That's 61 characters each.
+
+Line11: bottom: "└" + 59 "─" + "┘". That's 61.
+
+Now nested rectangle (Mars) width maybe 45? We need to fit inside outer. Let's decide width = outer width - 8? Actually we need at least 2 spaces margin on each side. So inner width = outer width - 4? That is 61-4=57. But we also need vertical space: top line placed at line 2 (outer side), bottom line at line 10 (outer side). That leaves lines 3-9 for inner side lines (7 lines). That's enough.
+
+Thus we can have multiple nested rectangles each offset by 2 spaces horizontally and 2 lines vertically.
+
+We can use a nested approach: Outer: left margin 0, right margin 0. Next: left margin 2, right margin 2. Next: left margin 4, right margin 4, etc.
+
+We can also reduce width accordingly: each inner rectangle width = outer width - 4 (since left and right offset by 2 spaces each). So we can have:
+
+- Level5 (outer): width61.
+
+- Level4: width 57.
+
+- Level3: width 53.
+
+- Level2: width 49.
+
+- Level1 (innermost): width 45.
+
+But this yields outermost 61, inner 57, 53, 49, 45. The difference each step is 4. That's fine.
+
+Now height: outermost side lines lines2-10 (9 lines). Next inner top at line 3? Let's design:
+
+- Outer top line line1.
+- Outer side lines line2 to line10 (9 lines).
+- Outer bottom line line11.
+
+Now for inner rectangle (level4), we want its top line at line3? That leaves one space between outer top and inner top? Actually we want vertical offset 2 as well: So inner top line at line3, inner side lines at lines4-8 (5 lines), inner bottom at line9? Let's calculate: Outer side lines from line2 to line10 (inclusive). If we offset by 2 lines: inner top at line3 (that's offset 2 from outer top). Outer top line is line1, so line3 is offset +2. Then inner bottom at line9? Actually inner height should be 7 lines (top+5 side+bottom). Let's see: inner top line at line3, inner side lines lines4-8 (5 lines), inner bottom line at line9. That fits: outer side lines go until line10, but we have inner bottom line at line9, leaving line10 for outer side line. That's okay: inner bottom line at line9 sits inside outer side region.
+
+Thus inner height = top line + side lines (5) + bottom line = 7 lines: lines3-9.
+
+Now next inner (level3) offset again by 2: top at line5, side lines lines6-8 (3 lines), bottom at line8? Wait we need to check.
+
+But we need to fit all levels: Outer: lines1-11 (11 lines). Level4: lines3-9 (7 lines). Level3: lines5-7? That would be only 3 lines, not enough to have side lines maybe. But we can compress.
+
+Alternatively, we can use a simpler approach: Use nested boxes with only top and bottom lines, and place planets on those lines. But that would be less clear.
+
+Better approach: Use a simplified representation: Represent orbits as ellipses using characters like '-' and '/' etc. That might be easier to code manually.
+
+Given the difficulty of nested boxes, maybe we can just draw a simple representation with orbits as arcs and place planets on arcs.
+
+Simplify: We'll draw the solar system as something like:
+
+```
+      .---.
+    .'     '.
+   /   ☀   \
+  |         |
+   \       /
+    '.   .'
+      '---'
+
+   .- - - - - -.
+ .'             '.
+(       o         )
+ '.             .'
+   '- - - - - -'
+
+   .- - - - - - - -.
+ .'                 '.
+(         O           )
+ '.                 .'
+   '- - - - - - - -'
+
+    .- - - - - - - - -.
+  .'                     '.
+(            *              )
+ '.                     .'
+   '- - - - - - - - -'
+
+   .- - - - - - - - - - -.
+ .'                           '.
+(            J                  )
+ '.                           .'
+   '- - - - - - - - - - -'
+```
+
+But this is quite big, but width maybe around 30-40? Let's compute: Each orbit width: maybe 15-30 characters. That may be okay.
+
+But we need a comet. We can add a line after the orbits: "  ~~> *".
+
+Let's design more systematically.
+
+We can represent each orbit as a circle using a pattern: top arc: ".---." (i.e., dot, hyphens, dot). Then side arcs: ".'" for left and "'." for right. Then bottom arc: "'---'". This pattern is common. Let's use that.
+
+Define a function: For a given radius (size), we can draw arcs.
+
+But we can manually write each orbit as:
+
+- Small orbit (Mercury): radius maybe 3:
+
+```
+  .---.
+ /     \
+(   ☀   )
+ \     /
+  '---'
+```
+
+- Slightly larger (Venus): radius maybe 5:
+
+```
+   .---.
+  /     \
+ /       \
+(    o    )
+ \       /
+  \     /
+   '---'
+```
+
+But using that pattern we can produce nested shapes.
+
+But we need to place planets on the arcs, not inside the central.
+
+Let's produce nested circles manually.
+
+Define outermost orbit for Jupiter as:
+
+```
+   .-''''''''-.
+ .'            '.
+/                \
+(        J        )
+\                /
+ '.            .'
+   '-........'
+```
+
+But we need to incorporate inner orbits.
+
+Alternative: Use a single diagram with central Sun and concentric circles drawn with repeated characters.
+
+Simplify: Use a simple ASCII art found online for solar system. Something like:
+
+```
+            .---.
+          .'  o  '.
+         /   ☀   \
+        |         |
+         \       /
+          '.   .'
+            '---'
+
+          .-''''-.
+        .'   o   '.
+       /           \
+      /    .-''-.   \
+     (    (  *  )    )
+      \    '-..-'    /
+       \           /
+        '.       .'
+          '-...-'
+
+        .-''''''''-.
+      .'           '.
+     /               \
+    /    .-''''-.     \
+   (    (   O   )      )
+    \    '-....-'     /
+     \               /
+      '.           .'
+        '-.......'
+```
+
+But that's too much.
+
+The prompt: "Draw this as an ASCII drawing: The solar system with orbits, planets of different sizes and a comet with a tail. About 60-90 characters wide and up to 40 lines. Use whatever characters you like (box-drawing, arrows, slashes, unicode). Do not deliberate or verify line lengths, draw immediately. Output ONLY the drawing inside one ``` code block, no explanation."
+
+Thus we need to produce something that fits constraints. The user expects a simple but recognizable ASCII representation. They want orbits, planets of different sizes, and a comet with a tail.
+
+We can produce something like:
+
+```
+      .---.
+    .'  o  '.
+   /   ☀   \
+  |         |
+   \       /
+    '.   .'
+      '---'
+
+   .-''''''''-.
+ .'    o     '.
+(      O       )
+ '.         .'
+   '-.......'
+
+      .-''''''''-.
+    .'    *    '.
+   (     J      )
+    '.        .'
+      '-....'
+
+Comet:  ~*-> 
+```
+
+But need width around 60-90. Let's try to draw something like:
+
+- Outer orbit (Jupiter) drawn as an ellipse.
+
+- Inside that, inner orbits as ellipses.
+
+- The Sun at center.
+
+- Planets placed on orbits.
+
+- Comet with tail: drawn maybe at top right of picture, like "~~>*".
+
+We can incorporate Unicode characters: Sun "☀", Earth "♁", etc. Use small letters for planets: "M" for Mercury, "V" for Venus, "E" for Earth, "M" for Mars, "J" for Jupiter.
+
+We can represent orbits as lines of hyphens and slashes:
+
+For each orbit, we can draw top half: "/" then "-" then "\". Bottom half: "\" then "-" then "/". Use different radii.
+
+We can produce something like:
+
+```
+      /‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑\
+    /                                               \
+   /                                                 \
+  /                                                   \
+ (                    ☀                              )
+  \                                                   /
+   \                                                 /
+    \                                               /
+     \‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑/
+```
+
+That's a large orbit.
+
+Then inner orbits similar but smaller.
+
+But drawing many nested orbits manually is time-consuming but doable.
+
+We can combine them: We draw each orbit as separate sets of lines, but we can overlay them: For each orbit we draw top half then bottom half. But they'd overlap.
+
+Alternatively, we can use a simpler diagram: Represent the solar system as a series of concentric circles with labels, like:
+
+```
+          (M)
+       (V)   (E)
+         ☀
+      (m)   (J)
+         (S)
+```
+
+But that may not look like orbits.
+
+But user probably expects a "drawing", not just labels.
+
+Thus we can do a more artistic representation.
+
+Let's aim for something like:
+
+```
+      .-''''''''''''''''''''''''''''''-.
+    .'                                   '.
+   /                                       \
+  /           .-''''''''''''''-.             \
+ (           /                 \            )
+  \         (        ☀         )          /
+   \         \                 /          /
+    \         '-''''''''''''''-'          /
+     \                                       /
+      '.                                   .'
+        '-''''''''''''''''''''''''''''''''-'
+
+         .-''''''''''''''''''-.
+       .'      (J)             '.
+      /                          \
+     /      .-''''''''''-.        \
+    (      /            \         )
+     \    (      O        )      /
+      \    \            /       /
+       \    '-''''''''-'      /
+        \                   /
+         '.               .'
+           '-...........-'
+```
+
+But that is too wide perhaps.
+
+We can compress.
+
+Better approach: Use a compact nested representation: each orbit drawn as a simple circle using characters like "-", "|", and corners.
+
+Simplify: Use a pattern:
+
+```
+   .---.
+  /     \
+ |   ☀   |
+  \     /
+   '---'
+```
+
+That's inner orbit.
+
+Next orbit can be drawn as bigger but we can embed the inner circle inside it, but to do that we need to draw outer circle with inner circle inside. That yields overlapping lines: we can overlay the inner circle within the outer circle. For example:
+
+```
+   .---.
+  / .-. \
+ | (☀) |
+  \ '-' /
+   '---'
+```
+
+But that draws inner circle as shape inside outer circle.
+
+Actually we can combine: draw outer circle with inner shape inside, as part of the same lines.
+
+Define outer circle: top: ".---."? Actually .---. can be top; left side "/" then maybe "|" etc.
+
+We can try to draw multiple nested circles in one picture by building a grid of characters: Each position belongs to the outermost shape or inner shapes.
+
+Simplify: Represent orbits as a set of points at different radii: like we can draw central Sun, then a bunch of characters forming orbit rings.
+
+One approach: Use ascii spirograph style: use loops for each orbit: The orbits can be drawn by characters at fixed positions: e.g., for each orbit radius R, we can print a character at positions (R,0) etc. But we need to embed as lines.
+
+Alternatively, we can do a simple stylized map: central Sun, then elliptical orbits as pairs of parentheses: like ( ( ( ☀ ) ) ). But that looks like nested parentheses, maybe okay.
+
+E.g.:
+
+```
+        ( ( ( (☀) ) ) )
+      ( ( ( (  ) ) ) )
+    (   (   (   )   )   )
+   (     (   ( )   )     )
+  (       (  ( )  )       )
+  (       (  ( )  )       )
+   (     (   ( )   )     )
+    (   (   (   )   )   )
+      ( ( ( (  ) ) ) )
+        ( ( ( (☀) ) ) )
+```
+
+But that is weird.
+
+Let's go with a straightforward approach: Use box drawing characters to draw nested rectangles as orbits. Then place planets on side lines. That seems doable.
+
+Let's attempt nested boxes with margins offset by 2 spaces horizontally and 2 lines vertically, as earlier.
+
+We'll have 5 nested rectangles (orbits). Let's set outermost width 61, next 57, then 53, then 49, then 45.
+
+Height: we need to have outermost height maybe 11 lines, then inner decreasing. Let's compute:
+
+- Outermost height: we can make it 11 lines (top line line1, side lines lines2-10 (9 lines), bottom line line11). That's fine.
+
+- Next inner height: 9 lines? Actually if we offset by 2 lines from outer top and bottom: inner top line at line3, inner side lines lines4-8 (5 lines), inner bottom line at line9. That's height = 7 lines (top + side + bottom). That's 7 lines.
+
+- Next inner: offset again by 2: top line at line5, side lines lines6-7? Actually need side lines lines6-? Let's think: The inner of height 7 must fit inside outer of height 11. With offset 2 from inner top to outer top: inner top line at line5. Then side lines at line6 and line7? That's only 2 side lines. That's not enough to contain innermost rectangle? Let's see: We can offset by 2 each time: Outer top line at 1, outer side lines 2-10, outer bottom 11.
+
+If we do inner level2 top at line3, side lines lines4-8 (5 lines), bottom line9. Good.
+
+Level3 top at line5, side lines lines6-? The inner height should be maybe 3 lines? That would be top at line5, side line at line6, bottom at line7. That's okay: we have side lines lines6 only. That's 1 side line. That may be too narrow to hold inner inner? But we can have inner innermost at line7 maybe.
+
+Thus nested rectangles: Level5 (outer) height 11 lines (1 top, 9 sides, 1 bottom). Level4 height 7 lines (1 top, 5 sides, 1 bottom). Level3 height 3 lines (1 top, 1 side, 1 bottom). Level2 maybe also 3 lines? But we need at least 5 levels: Mercury, Venus, Earth, Mars, Jupiter. Actually we can do 5 nested: Outer Jupiter, then Mars, Earth, Venus, Mercury. That's 5.
+
+Thus we have depths: Level5 (outermost Jupiter) - height 11, Level4 (Mars) - height 7, Level3 (Earth) - height 3? But then we cannot have inner levels because need at least 1 side line to hold inner. Actually we can have innermost Mercury at level1: perhaps just a small circle in the middle of Earth.
+
+We could also have Level2 (Venus) between Earth and Mercury: maybe height 3 as well. But we need to place them accordingly: Level3 (Earth) top at line5, side lines line6 (maybe two lines?), bottom at line7. Then Level2 (Venus) top at line? Should be offset 2 from Level3 top: at line7? That would overlap with Earth bottom? Not ideal.
+
+Thus using nested rectangles with offset of 2 lines works only for limited depth. To have 5 levels, we need height of outermost at least 2*5+1 = 11 lines, inner height = 9, 7, 5, 3 maybe. Let's calculate: outermost height = 2*5+1 = 11. Next height = 2*4+1 = 9. Next = 2*3+1 = 7. Next = 2*2+1 = 5. Innermost = 2*1+1 = 3. That yields total lines = outermost height = 11 lines, but inner levels are nested inside each other, so total height remains outermost height 11. Indeed we can have nested levels with heights decreasing by 2 each level, as we have vertical offset of 2 lines each. So for depth 5, heights are 11,9,7,5,3. That's perfect: outermost height 11, next 9, then 7, then 5, then 3.
+
+Thus we can have:
+
+- Level5 (Jupiter): top line at line1, side lines lines2-10 (9 side lines), bottom line at line11.
+
+- Level4 (Mars): top line at line3? Wait offset: we want vertical offset of 2 from outermost top: so Level4 top at line3 (since outermost side lines start at line2). Then side lines lines4-8 (5 lines?), but height for Level4 should be 9 lines (top+7 sides+bottom?). Wait let's recalc: For depth d, height = 2*d+1. So for d=5 (Jupiter): height = 11 lines. For d=4 (Mars): height = 9 lines. Indeed 2*4+1 = 9. So Level4 has height 9 lines. The top line should be at line (outer top line + 2) = line3, then side lines lines4-? Let's count: top line line3, side lines lines4-? The number of side lines = height - 2 = 7. So side lines lines4-10? Wait we need to fit within outer side lines lines2-10. So Level4 side lines should be lines4-10 (7 lines). Then bottom line at line11? That would be bottom line line11, but outermost bottom line also at line11, overlapping. That might be okay if we draw bottom line of Level4 at same line as outermost bottom? Actually need to be careful: Outer bottom at line11, we cannot have Level4 bottom also at line11 (it would conflict). But perhaps we can offset by 1: The nested levels offset by 2 each, but the outermost has side lines from line2 to line10. The inner top at line3, inner side lines line4-? we need inner bottom at line? For height 9, we have top at line3, side lines lines4-10 (7 lines), bottom at line11. That indeed puts bottom at line11, same as outer bottom. That's okay maybe, but we also need outermost side lines in same area.
+
+We could also make outermost height larger to avoid conflict. But we can handle overlapping characters: we will draw outermost box, then inner box within, and any overlapping characters will be overwritten by inner? But in ASCII art, we can't easily overwrite. But we can just draw inner on top of outer by constructing lines that include outer characters and then replace parts with inner. However, simpler is to draw each level on separate lines but not overlapping in vertical dimension: we can place them as separate groups of lines, each group containing full circles, not nested. But that would be separate circles, not nested, but that might be okay: we can draw multiple circles separately, each centered at same center, but they will overlap. That's messy.
+
+Thus nested rectangles may be too complicated to manually code.
+
+Better to go with a simpler approach: Draw concentric circles using a radial pattern: Represent orbits as arcs with characters like '-' for horizontal, '/' and '\' for diagonal, and '|' for vertical. Use nested loops.
+
+Simplify further: Represent each orbit as a simple ellipse with minimal characters: e.g., for each orbit we draw top and bottom arcs as "(. )" and " ) (", and sides as vertical lines. But we can also use Unicode characters for circles: "◯", "⬭", "⭕". Actually there are Unicode circle drawing characters: "○" (U+25CB) is a white circle, "◯" (U+25EF) large circle, "∘" (U+2218) composition, "◎" (U+25CE) bullseye, "⊙" (U+2299) circled dot, "⊚" (U+229A) circled ring. Could use these.
+
+We can draw the Sun as "☀". Or we can draw as "☉". Use "☀" perhaps.
+
+Plan: Use Unicode character "∘" for orbit, but we need many of them to form a circle.
+
+Alternatively, draw orbits as sequences of characters: for each orbit radius R, we can draw a circle using coordinates: positions where x^2 + y^2 ≈ R^2. But that would be heavy to manually place.
+
+Simplify: Use a "ASCII art" representation like this:
+
+```
+          .---.
+        .'  o  '.
+       /   ☀   \
+      |         |
+       \       /
+        '.   .'
+          '---'
+
+      .-''''''''-.
+    .'   (J)     '.
+   /               \
+  /    .-''''-.     \
+ (    (   O   )      )
+  \    '-....-'     /
+   \               /
+    '.           .'
+      '-.......'
+```
+
+We can embed inner circles inside outer ones by overlaying them in the same lines. For example, draw outermost circle using characters like '-' and '/' in outer lines, then inner circles using characters in inner lines.
+
+Let's try a simpler approach: Represent each orbit as a pair of horizontal lines (top and bottom) with vertical lines on sides, but we can also add diagonal corners.
+
+We can draw the following:
+
+```
+      .-''''''''''''''''-.
+    .'                      '.
+   /                          \
+  /           .-''''''-.         \
+ (           /        \          )
+  \         (   ☀    )          /
+   \         \        /         /
+    \         '-''''-'          /
+     \                        /
+      '.                    .'
+        '-................'
+```
+
+But that is one orbit. We can add inner orbits inside it by adding inner shapes within the same drawing.
+
+Given the time constraints, perhaps we can produce a simpler but still decent ASCII art:
+
+- Use central Sun with Unicode "☀".
+
+- Draw three concentric orbits using simple arcs: use hyphen and slash.
+
+- Represent planets as small letters placed on orbit arcs.
+
+- Add comet tail with "→→*".
+
+Let's do something like:
+
+```
+        .-''''''''-.
+      .'   (J)     '.
+    .'    .-''-.     '.
+   /      (  O )       \
+  /       '-..-'         \
+ (          ☀             )
+  \                       /
+   \                    /
+    '.                .'
+      '-.___________.-'
+
+        .-''''''-.
+      .'   *    '.
+    .'  .-''-.    '.
+   /   (  o  )      \
+  /    '-..-'        \
+ (         ☀          )
+  \                 /
+   \              /
+    '.          .'
+      '-......-'
+
+      .-''''-.
+    .'   o  '.
+   /    ☀    \
+  /          \
+ (            )
+  \          /
+   \        /
+    '.    .'
+      '-.-'
+```
+
+But we also need Mercury, Venus, Earth, Mars etc. That is a lot. Could simplify to include just one planet per orbit, representing them as letters.
+
+Alternatively, produce a simpler diagram: use nested parentheses:
+
+```
+          ((((o))))
+        ((   ☀   ))
+          ((((o))))
+```
+
+But we need more.
+
+The prompt says "Draw this as an ASCII drawing: The solar system with orbits, planets of different sizes and a comet with a tail." It doesn't specify exact planets, just "planets of different sizes". So we can include a few planets with varying sizes.
+
+Thus we can show central Sun, then orbits around, each orbit with a planet (different size: maybe "o", "O", "J", "*").
+
+Add a comet with tail: maybe drawn as " ~*~> ".
+
+Let's design a drawing with central Sun, three orbits: inner small orbit with small planet, middle orbit with medium planet, outer orbit with large planet. Also maybe one more orbit for Jupiter and maybe a comet.
+
+We can keep width about 70.
+
+We can draw each orbit as a simple circle approximated by characters:
+
+- For inner orbit radius small: maybe like:
+
+```
+      (o)
+```
+
+But we want full circle.
+
+We can approximate a circle with lines:
+
+- top: .---.
+- sides: /   \
+- bottom: '---'
+
+Thus we can do for each orbit.
+
+Let's design three nested circles using this pattern, with offsets to nest them.
+
+Define three circles:
+
+- Outer: radius large: width maybe 25.
+
+- Middle: radius medium: width maybe 17.
+
+- Inner: radius small: width maybe 9.
+
+We can nest them by drawing outer circle, then inner inside.
+
+We'll need to construct each line with appropriate characters.
+
+Simplify: Use a known ASCII art pattern for concentric circles:
+
+```
+        .-''''''''-.
+      .'           '.
+     /               \
+    /    .-''''''-.    \
+   (    /         \    )
+    \   \         /   /
+     \   '-.....-'   /
+      \               /
+       '.           .'
+         '-.......-'
+
+   This is outer.
+```
+
+But then we need inner circles inside that.
+
+We can embed inner circles in the same picture: For each line, we can include characters for each circle.
+
+We need to produce lines that include characters for outer, middle, inner circles, and also the planets.
+
+This can be done by building a map of positions for each circle.
+
+We can also cheat by drawing each orbit as separate concentric circles placed on separate lines, like:
+
+```
+        .-''''''-.      (J)
+      .'          '.
+     /              \
+    /   .-''''''-.   \
+   (   /          \   )
+    \  \   (O)    /  /
+     \  '-......-'  /
+      \              /
+       '.          .'
+         '-......-'
+
+         .-''''''-.
+       .'    o    '.
+      /            \
+     /   .-'''-.   \
+    (   /   ☀   \   )
+     \  \       /  /
+      \  '-...-'  /
+       \         /
+        '.     .'
+          '---'
+
+          .---.
+        .'  *  '.
+       /       \
+      (    ☀    )
+       \       /
+        '.   .'
+          '---'
+```
+
+But that's three separate circles, not nested, but that's okay. The prompt might accept that as representation of orbits: each orbit is a separate circle, but they are drawn separately, not physically nested, but we can place them one after another in the picture. The central Sun appears in innermost. That might be acceptable: we can draw central small circle with Sun, then a larger circle around it (but we can draw them as separate rings with distance). Actually we can draw them nested: draw outermost, then next inside, etc.
+
+We can combine them in same picture: for each line, we can overlay multiple circles. But it's simpler to just draw each circle as separate region, like they are separate parts of the drawing, but they'd be overlapping if placed in same region. But we can separate them by shifting horizontally, but they'd be separate, maybe like a diagram with multiple circles side by side. However that might not convey orbits.
+
+Thus better to nest them.
+
+We can produce a nested structure: The outermost circle encloses everything, inner circles inside, and so on.
+
+So we need to generate lines that represent nested circles.
+
+Let's attempt to produce a nested structure manually:
+
+Define radii: outermost R=9 (half-width). Middle R=6. Inner R=3. Innermost maybe small: R=1 (the Sun). We'll represent circles with characters: top and bottom arcs: .---., side arcs: / and \. We'll use hyphens for horizontal, slashes for diagonal.
+
+We can produce a grid of characters with coordinates. Let's define a grid of maybe 21 rows (like 2*R_out+3?). For outer radius 9, we need height maybe 19 lines. Let's calculate: radius 9 => diameter 18 => height 19 lines (including top and bottom). For inner radius 6 => height 13 lines, radius 3 => height 7 lines. So we can nest them within 19 lines.
+
+We can then embed the Sun at center.
+
+We need to draw three circles: outermost (R=9), middle (R=6), inner (R=3), and innermost maybe small (R=1) for Sun (or just the Sun as character). The Sun can be placed in innermost region (R=0). But we can treat Sun as central char in the innermost region.
+
+We need to draw arcs for each radius at appropriate lines.
+
+Approach: Use a coordinate system: For each line y (from -R_out to +R_out), we can compute the width of each circle at that y: x_range = floor(sqrt(R^2 - y^2)). Then we can place characters accordingly: at positions where x == x_range we place appropriate arc characters: at extreme points (leftmost/rightmost) we can use '-' for horizontal, but we also need to place corners at the top/bottom where y = +/-R: there we use '.' maybe.
+
+But manually constructing a nested ascii is tedious but doable.
+
+We can try to manually draw a nested picture.
+
+Let's define outer radius 9: We'll have a circle of width 19 lines (vertical). We'll draw top and bottom arcs at y = -9 and y = 9. For each y between, we compute x_max.
+
+Simplify: Write code in mind? Hard manually. But maybe we can approximate with simpler shapes: For each radius, we can use the pattern:
+
+- At top and bottom: ".---." (dot, hyphens, dot)
+- At sides: "/   \" and "\   /" accordingly.
+
+But these shapes are not perfect circles but approximated.
+
+Thus we can define for radius R: top: "." + (2*R-1 hyphens) + ".". Then side lines: "/" + (2*R-2 spaces) + "\". Bottom: "'" + hyphens + "'". But that's a rectangle with corners at top left and right as '.' and bottom as ''.
+
+But we can adjust.
+
+Given complexity, perhaps it's easier to use Unicode circles: e.g., "⭕" for orbit, "⊙" for Sun. Then we can just place them as characters.
+
+But that may not show orbits.
+
+We can also draw orbits as small plus signs or asterisks.
+
+Simplify: Use a diagram with concentric circles drawn by Unicode "○" repeated around.
+
+For example:
+
+```
+          ○○○○○○○○○○○○○○○○○○○○○○○○○○○
+        ○                            ○
+      ○                                ○
+     ○                                  ○
+    ○                                    ○
+   ○                                      ○
+   ○                                      ○
+  ○                                        ○
+  ○           ☀                           ○
+  ○                                        ○
+   ○                                      ○
+   ○                                      ○
+    ○                                    ○
+     ○                                  ○
+      ○                                ○
+        ○                            ○
+          ○○○○○○○○○○○○○○○○○○○○○○○○○○○
+```
+
+This is a large circle of "○". That's orbit. Then inner circles similar. But we need to manually place many "○". That's tedious.
+
+Maybe we can use a more abstract representation: "Orbit lines" can be drawn as "---------------". Then we place planets on them. Then central Sun. Then comet.
+
+Simplify: Represent orbits as horizontal lines drawn across the diagram with gaps for planets, like:
+
+```
+               .-''''''-.
+             .'          '.
+            /              \
+           /    .-''''-.    \
+          (    /        \    )
+           \  (    ☀    )  /
+            \  \        /  /
+             \  '-....-'  /
+              \          /
+               '-......-'
+
+```
+
+But again too heavy.
+
+Given the constraints, perhaps the best is to produce a simple diagram: central Sun, then three concentric orbits drawn with simple characters, each containing a planet of different size, and a comet tail.
+
+I'll try to manually create a nested drawing with 3 orbits and planets, using approximate arcs.
+
+I'll aim for width ~70 and height ~20.
+
+We can represent orbits using this pattern:
+
+- Outer orbit: using characters: top and bottom as ".---." and sides as "/   \".
+
+We can draw three such circles nested: each outer contains inner.
+
+We need to embed the Sun at center: maybe placed on the innermost small circle.
+
+Let's do step by step.
+
+We want to draw 3 circles:
+
+- Outer: radius maybe 9: top line: .-----------. (with 9*2-1 = 17 hyphens? Actually radius 9 => diameter 19, so width 19? Let's set radius 9 => width = 2*R+1 = 19? Let's decide: For R=9, we have width maybe 19 characters: leftmost '.' then 17 hyphens then rightmost '.'. That yields 19 characters. But we want width ~70, so we can make outer radius 30 maybe? But we need within 90.
+
+But we can just use small radius like 7 or 9.
+
+Actually let's decide a moderate size: radius outer = 10, middle = 6, inner = 2 (just small). That yields widths: outer: 21 chars, middle: 13, inner: 5. That is small. But we want to have multiple orbits, but we
+</think>

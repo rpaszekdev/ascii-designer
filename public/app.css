@@ -1,0 +1,70 @@
+:root { --accent: #3b82f6; --mono: ui-monospace, "SF Mono", Menlo, monospace; --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; color: #111; font: 13px var(--mono); }
+#viewport { position: absolute; inset: 0; overflow: hidden; background: #fff; background-image: radial-gradient(#e4e4e7 1px, transparent 1px); background-size: 24px 24px; }
+#viewport.grab { cursor: grab; }
+#viewport.grabbing { cursor: grabbing; }
+#world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+#world.animate { transition: transform .18s ease-out; }
+#hint { position: absolute; inset: 0; display: grid; place-items: center; color: #a1a1aa; font: 14px var(--sans); pointer-events: none; }
+#hint[hidden] { display: none; }
+#hint kbd { border: 1px solid #d4d4d8; border-radius: 5px; padding: 2px 6px; font: inherit; background: #fafafa; }
+
+/* the only chrome: tools centre, zoom left, skins/export right — Excalidraw's layout, fewer buttons */
+.bar { position: absolute; bottom: 20px; display: flex; align-items: center; gap: 2px; padding: 5px; background: #fff; border: 1px solid #ececf0; border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.015), 0 8px 28px -8px rgba(0,0,0,.2), 0 1px 3px rgba(0,0,0,.05); z-index: 10; }
+#bar { left: 50%; transform: translateX(-50%); }
+#zoomBar { left: 20px; }
+#sideBar { right: 20px; }
+.bar button { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 40px; min-width: 40px; padding: 0 10px; border: 0; border-radius: 9px;
+  background: transparent; color: #1b1b1f; font: 13px var(--sans); cursor: pointer; }
+.bar button:hover { background: #f1f0ff; }
+.bar button.on { background: #e0dfff; color: #4440bf; }
+.bar .sep { width: 1px; height: 22px; background: #e4e4e7; margin: 0 5px; }
+#bar button { width: 44px; height: 44px; padding: 0; }
+.bar i { display: block; width: 20px; height: 20px; font-style: normal; }
+.bar i svg { display: block; width: 100%; height: 100%; stroke-width: 1.5; }
+#bar kbd { position: absolute; right: 5px; bottom: 3px; font: 9px var(--sans); color: #9ca3af; }
+#bar button.on kbd { color: #6e6bd3; }
+#zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
+#hint { grid-auto-rows: min-content; align-content: center; gap: 10px; }
+#hint small { font: 13px var(--sans); color: #b4b4bb; }
+#marquee { position: absolute; border: 1px solid var(--accent); background: rgba(59,130,246,.08); pointer-events: none; z-index: 4; }
+#textEdit { position: absolute; z-index: 5; height: 18px; min-width: 80px; padding: 0; border: 0; border-bottom: 2px solid #f59e0b; outline: none; background: #fffdf5; color: #111; font: 13px/18px var(--mono); }
+#viewport.hand { cursor: grab; }
+#viewport.erasing { cursor: cell; }
+
+/* sheets = one paste each */
+.sheet { position: absolute; }
+.sheet:hover { outline: 1px dashed rgba(59,130,246,.5); outline-offset: 8px; }
+.sheet.selected, .sheet.selected:hover { outline: 2px solid var(--accent); outline-offset: 8px; }
+.sheet.dragging { cursor: grabbing; opacity: .9; }
+.item { position: absolute; margin: 0; white-space: pre; overflow: visible; }
+.item:not(.frame) { cursor: grab; }
+.item:not(.frame):hover { outline: 1px dashed rgba(59,130,246,.55); outline-offset: 2px; }
+.item.selected, .item.selected:hover { outline: 2px solid var(--accent); outline-offset: 2px; z-index: 2; }
+.item.dragging { opacity: .85; cursor: grabbing; z-index: 3; }
+#handle { position: absolute; width: 10px; height: 10px; background: #fff; border: 2px solid var(--accent); border-radius: 2px; cursor: nwse-resize; z-index: 6; }
+#editor { position: absolute; z-index: 5; font: 13px/18px var(--mono); white-space: pre; resize: none; padding: 8px 12px; border: 2px solid #f59e0b; border-radius: 4px; outline: none; background: #fffdf5; color: #111; tab-size: 4; overflow: hidden; }
+#toast { position: absolute; left: 50%; bottom: 84px; transform: translateX(-50%); padding: 8px 14px; background: #111; color: #fff; border-radius: 8px; font: 13px var(--sans); z-index: 20; }
+#asciiPanel { position: absolute; left: 50%; bottom: 86px; transform: translateX(-50%); width: min(92vw, 960px); height: min(50vh, 520px); z-index: 9;
+  padding: 14px 18px; border: 1px solid #e4e4e7; border-radius: 12px; background: #fff; color: #111; font: 12px/15px var(--mono); white-space: pre; resize: none; outline: none;
+  box-shadow: 0 12px 40px -12px rgba(0,0,0,.25), 0 1px 3px rgba(0,0,0,.06); }
+#asciiPanel[hidden] { display: none; }
+.arrow svg, .line svg, .diamond svg, .pen svg { display: block; overflow: visible; pointer-events: none; }
+.draft { pointer-events: none; opacity: .75; }
+#viewport.drawing { cursor: crosshair; }
+#viewport.drawing .sheet:hover, #viewport.drawing .item:hover { outline: none; }
+
+.item.icon svg { display: block; width: 100%; height: 100%; padding: 10%; box-sizing: border-box; }
+.item.icon.missing { display: flex; align-items: center; justify-content: center; color: #9ca3af; font: 12px/1 ui-monospace, monospace; }
+
+/* ✦ — an anchored prompt; the answer streams into a sheet right under the star */
+#aiBubble { position: absolute; z-index: 7; width: 300px; padding: 10px 12px 8px; transform: translate(-14px, calc(-100% - 18px)); background: #fff; border: 1px solid #ddd6fe; border-radius: 12px;
+  box-shadow: 0 10px 30px -10px rgba(76,63,255,.35), 0 1px 3px rgba(0,0,0,.05); font: 13px var(--sans); }
+#aiBubble .star { position: absolute; left: 10px; bottom: -24px; color: #6d5dfc; font-size: 16px; line-height: 1; }
+#aiBubble textarea { display: block; width: 100%; border: 0; outline: none; resize: none; padding: 0; background: transparent; color: #111; font: 13px/1.4 var(--sans); }
+#aiBubble small { display: block; min-height: 14px; margin-top: 4px; color: #8b85a8; }
+#aiBubble.busy .star { animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+#aiBubble .shot { display: block; max-width: 100%; max-height: 140px; margin: 0 auto 8px; border: 1px solid #ececf0; border-radius: 6px; }

@@ -1,0 +1,25 @@
+/* wire.css — sketch skin: monospace, dark strokes, crossed images */
+.skin-wire .item { font: 13px/18px var(--mono); color: #111; }
+.skin-wire .frame { background: #fff; border: 1.5px solid #111; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
+.skin-wire .box { border: 1.5px solid #333; }
+.skin-wire .role-nav { border-width: 0 0 1.5px; }
+.skin-wire .role-footer { border-width: 1.5px 0 0; }
+.skin-wire .title { position: absolute; top: -9px; left: 8px; padding: 0 4px; background: #fff; font-weight: 700; }
+.skin-wire .btn { border: 1.5px solid #111; border-radius: 3px; background: #fff; color: #111; font: inherit; padding: 0; text-align: center; overflow: hidden; }
+.skin-wire .input, .skin-wire .select { border: 1.5px solid #333; border-radius: 3px; background: #fff; color: #111; font: inherit; padding: 0 6px; }
+.skin-wire .check, .skin-wire .radio { display: flex; align-items: center; justify-content: center; }
+.skin-wire .check input, .skin-wire .radio input { margin: 0; width: 13px; height: 13px; accent-color: #111; }
+.skin-wire .link { color: #111; text-decoration: underline dotted; }
+.skin-wire h1.item, .skin-wire h2.item, .skin-wire h3.item { font-weight: 700; }
+.skin-wire h1.item { font-size: 15px; }
+.skin-wire .text { color: #222; }
+.skin-wire .unknown { color: #a1a1aa; }
+.skin-wire .img { border: 1.5px solid #333; color: #666; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(to top right, transparent calc(50% - .75px), #333 50%, transparent calc(50% + .75px)),
+              linear-gradient(to top left, transparent calc(50% - .75px), #333 50%, transparent calc(50% + .75px)); }
+.skin-wire .img .label { background: #fff; padding: 0 4px; font-size: 12px; }
+.skin-wire .divider { height: 0 !important; border-top: 1.5px dashed #999; transform: translateY(9px); }
+
+.skin-wire .arrow, .skin-wire .line, .skin-wire .diamond, .skin-wire .pen { color: #111; }
+.skin-wire .ellipse { border: 1.5px solid #222; border-radius: 50%; }
+.skin-wire .icon { color: #111; }

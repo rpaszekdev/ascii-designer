@@ -1,0 +1,47 @@
+[
+  {
+    "name": "launch",
+    "size": "60x28",
+    "tokens": 4,
+    "valid": 4,
+    "boxed": 1,
+    "boxes": 9,
+    "names": "rocket globe zap shield"
+  },
+  {
+    "name": "dashboard",
+    "size": "60x18",
+    "tokens": 5,
+    "valid": 1,
+    "boxed": 0,
+    "boxes": 9,
+    "names": "bell chart coin bag trend"
+  },
+  {
+    "name": "solar",
+    "size": "68x6",
+    "tokens": 5,
+    "valid": 1,
+    "boxed": 0,
+    "boxes": 5,
+    "names": "star planet"
+  },
+  {
+    "name": "pipeline",
+    "size": "0x1",
+    "tokens": 0,
+    "valid": 0,
+    "boxed": 0,
+    "boxes": 0,
+    "names": ""
+  },
+  {
+    "name": "profile",
+    "size": "44x25",
+    "tokens": 6,
+    "valid": 6,
+    "boxed": 1,
+    "boxes": 9,
+    "names": "user settings bell heart globe lock"
+  }
+]

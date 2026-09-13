@@ -1,0 +1,40 @@
+/* sketch.css — hand-drawn skin. No library: wobbly border-radius + handwritten font + a hair of rotation. */
+.skin-sketch { --hand: 15px/18px "Patrick Hand", "Comic Sans MS", cursive; }
+.skin-sketch .item { font: var(--hand); color: #1f2937; }
+.skin-sketch .frame, .skin-sketch .box, .skin-sketch .btn, .skin-sketch .input, .skin-sketch .select, .skin-sketch .img {
+  border: 2px solid #1f2937; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; }
+.skin-sketch .item:nth-child(even) { border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px; }
+.skin-sketch .frame { background: #fffdf7; box-shadow: 3px 4px 0 rgba(31,41,55,.12); transform: rotate(-.15deg); }
+.skin-sketch .box { background: #fffdf7; transform: rotate(.25deg); }
+.skin-sketch .box:nth-child(odd) { transform: rotate(-.3deg); }
+.skin-sketch .title { position: absolute; top: -11px; left: 10px; padding: 0 6px; background: #fffdf7; font-weight: 700; font-size: 16px; }
+.skin-sketch .btn { background: #fffdf7; color: #1f2937; font: var(--hand); padding: 0; text-align: center; box-shadow: 2px 2px 0 rgba(31,41,55,.25); transform: rotate(-.5deg); }
+.skin-sketch .input, .skin-sketch .select { background: #fff; color: #1f2937; font: var(--hand); padding: 0 8px; }
+.skin-sketch .check, .skin-sketch .radio { display: flex; align-items: center; justify-content: center; }
+.skin-sketch .check input, .skin-sketch .radio input { appearance: none; margin: 0; width: 15px; height: 15px; border: 2px solid #1f2937; background: #fff;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; display: grid; place-items: center; }
+.skin-sketch .radio input { border-radius: 50% 45% 55% 50%; }
+.skin-sketch .check input:checked::before { content: '✓'; font: 700 14px/1 "Patrick Hand", cursive; color: #1f2937; }
+.skin-sketch .radio input:checked::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #1f2937; }
+.skin-sketch .link { color: #1f2937; text-decoration: none; border-bottom: 2px solid #1f2937; transform: rotate(-.4deg); }
+.skin-sketch h1.item, .skin-sketch h2.item, .skin-sketch h3.item { font-weight: 700; white-space: nowrap; }
+.skin-sketch h1.item { font-size: 26px; line-height: 26px; margin-top: -4px; }
+.skin-sketch h2.item { font-size: 19px; }
+.skin-sketch .text { color: #374151; }
+.skin-sketch .unknown { font: 13px/18px var(--mono); color: #a1a1aa; }
+.skin-sketch .img { color: #6b7280; display: flex; align-items: center; justify-content: center; transform: rotate(.3deg);
+  background: linear-gradient(to top right, transparent calc(50% - 1px), #1f2937 50%, transparent calc(50% + 1px)),
+              linear-gradient(to top left, transparent calc(50% - 1px), #1f2937 50%, transparent calc(50% + 1px)); }
+.skin-sketch .img .label { background: #fffdf7; padding: 0 4px; }
+.skin-sketch .divider { height: 0 !important; border-top: 2px solid #1f2937; transform: translateY(9px) rotate(-.15deg); opacity: .8; }
+.skin-sketch .role-nav, .skin-sketch .role-footer { border-width: 0; background: transparent; box-shadow: none; }
+.skin-sketch .role-nav { border-bottom: 2px solid #1f2937; border-radius: 0; }
+.skin-sketch .role-footer { border-top: 2px solid #1f2937; border-radius: 0; }
+
+.skin-sketch .arrow, .skin-sketch .line, .skin-sketch .diamond, .skin-sketch .pen { color: #1f2937; }
+.skin-sketch .ellipse { border: 2px solid #1f2937; border-radius: 50% 48% 52% 50% / 52% 50% 48% 50%; transform: rotate(-.4deg); }
+.skin-sketch .icon { color: #1f2937; transform: rotate(-.5deg); }
+.skin-sketch .icon svg { stroke-width: 2.5; }
+.skin-sketch .diamond { transform: rotate(-.4deg); }
+.skin-sketch .diamond svg polygon { stroke-width: 2; }
+.skin-sketch .pen svg polyline { stroke-width: 2.4; }

@@ -1,0 +1,75 @@
+<think>
+The user wants me to create an ASCII sketch of a landing page for a rocket delivery startup. Let me follow the guidelines:
+
+- Screen rectangle with title
+- Hero section with large rocket icon
+- Three feature cards with icons
+- Footer
+- About 60-90 characters wide, up to 40 lines
+
+Let me create this:
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    RocketDrop                            │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│              ┌──────────┐                                │
+│              │ :rocket: │                                │
+│              └──────────┘                                │
+│                                                          │
+│           Lightning-Fast Space Delivery                  │
+│                                                          │
+│      Deliver packages to any orbit in hours             │
+│                                                          │
+│           [ Get Started ]    [ Watch demo ]              │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│  ┌────────────────┐ ┌────────────────┐ ┌───────────┐   │
+│  │    :globe:     │ │    :zap:        │ │ :shield:  │   │
+│  │  Global Reach  │ │  Light Speed   │ │  Secure   │   │
+│  │  Any planet,   │ │  Packages arrive│ │  Encrypted│   │
+│  │  any orbit     │ │  in minutes    │ │  delivery │   │
+│  └────────────────┘ └────────────────┘ └───────────┘   │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│              © 2024 RocketDrop Inc.                      │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+```
+
+Let me refine this to be more polished and within the width guidelines:
+</think>
+
+```code
+┌──────────────────────────────────────────────────────────┐
+│                      RocketDrop                          │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│                    ┌──────────┐                          │
+│                    │ :rocket: │                          │
+│                    └──────────┘                          │
+│                                                          │
+│            🚀 Instant Space Delivery                     │
+│                                                          │
+│         Send packages to any orbit in hours             │
+│                                                          │
+│        [ Get Started ]      [ Watch demo > ]            │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│   ┌──────────────┐  ┌──────────────┐  ┌─────────────┐   │
+│   │   :globe:    │  │    :zap:     │  │  :shield:   │   │
+│   │ Global Reach │  │  Light Speed│  │   Secure    │   │
+│   │ Any planet,  │  │  Minutes    │  │  Encrypted  │   │
+│   │ any orbit    │  │  delivery   │  │   delivery  │   │
+│   └──────────────┘  └──────────────┘  └─────────────┘   │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│              © 2024 RocketDrop Inc.                      │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+```

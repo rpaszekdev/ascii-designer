@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ascii designer</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="wire.css">
+<link rel="stylesheet" href="sketch.css">
+<link rel="stylesheet" href="hifi.css">
+</head>
+<body>
+<main id="viewport">
+  <div id="world" class="skin-wire"><div id="handle" hidden></div></div>
+  <div id="hint" hidden><span><kbd>⌘V</kbd> paste ASCII or a screenshot anywhere &nbsp;·&nbsp; <kbd>⌘⇧P</kbd> copy the prompt for Claude</span><small>To move the canvas, hold <kbd>Space</kbd> while dragging, or use the hand tool</small></div>
+  <nav id="bar" class="bar">
+    <button id="lock" title="keep the tool after drawing (Q)"><i data-icon="lock-open"></i></button>
+    <span class="sep"></span>
+    <span id="tools"><button data-tool="hand" title="hand (H)"><i data-icon="hand"></i><kbd>H</kbd></button><button data-tool="pen" title="pen (1 or P)"><i data-icon="pencil"></i><kbd>1</kbd></button><button data-tool="select" class="on" title="select (2 or V)"><i data-icon="mouse-pointer-2"></i><kbd>2</kbd></button><button data-tool="box" title="rectangle (3 or R)"><i data-icon="square"></i><kbd>3</kbd></button><button data-tool="diamond" title="diamond (4 or D)"><i data-icon="diamond"></i><kbd>4</kbd></button><button data-tool="ellipse" title="ellipse (5 or O)"><i data-icon="circle"></i><kbd>5</kbd></button><button data-tool="arrow" title="arrow (6 or A)"><i data-icon="arrow-right"></i><kbd>6</kbd></button><button data-tool="line" title="line (7 or L)"><i data-icon="minus"></i><kbd>7</kbd></button><button data-tool="text" title="text (8 or T)"><i data-icon="type"></i><kbd>8</kbd></button><button data-tool="eraser" title="eraser (9 or E)"><i data-icon="eraser"></i><kbd>9</kbd></button><span class="sep"></span><button data-tool="ai" title="AI — click the canvas, say what should appear there, watch it draw (K)"><i data-icon="sparkles"></i><kbd>K</kbd></button></span>
+  </nav>
+  <nav id="zoomBar" class="bar">
+    <button id="zoomOut" title="zoom out">−</button><button id="zoom" title="reset zoom">100%</button><button id="zoomIn" title="zoom in">+</button>
+    <span class="sep"></span>
+    <button id="fit" title="fit"><i data-icon="scan"></i></button>
+  </nav>
+  <nav id="sideBar" class="bar">
+    <button id="ask" title="ask about the selection (or the whole canvas): arrange, align, grid, rename, clean up… (⌘K)">ask</button>
+    <span class="sep"></span>
+    <button data-skin="wire">wire</button><button data-skin="sketch" class="on">sketch</button><button data-skin="hifi">hi-fi</button><span class="sep"></span><button id="air" title="air: every border on its own line, with space between — the ASCII stays tight">air</button>
+    <span class="sep"></span>
+    <button id="selectAll" title="select every sheet (⌘A)">select all</button>
+    <button id="ascii" title="render the canvas as ASCII (also copies it)">ascii</button>
+  </nav>
+  <textarea id="asciiPanel" hidden readonly spellcheck="false"></textarea>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

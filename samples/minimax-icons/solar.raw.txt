@@ -1,0 +1,518 @@
+<think>
+We need to produce an ASCII sketch of an explanatory diagram of the solar system: sun, 4 planets of increasing size, labels, orbit arrows. The canvas is about 60-90 characters wide, up to 40 lines.
+
+The user wants us to draw an explanatory diagram of the solar system: the sun and four planets of increasing size, labels, orbit arrows. It should be drawn as ASCII, in a single code block, no explanation. The instructions: "Do not deliberate, draw immediately. Output ONLY the drawing in one ``` code block."
+
+We must follow the UI sketch spec: but here it's just a diagram, not a UI component, but they mention icons: Use icons for nouns like rocket, database, etc. The diagram should be of the solar system; they want an explanatory diagram with sun, four planets of increasing size, labels, orbit arrows.
+
+Given that the canvas is 60-90 characters wide and up to 40 lines, we need to keep it within that width.
+
+We can include an icon for the sun: maybe a sun icon name: "sun" is not in the list of icons: they gave nouns: rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain. There is a star icon. We could use star icon for the sun? Or "sun" is not listed. But we could use "star" icon for the sun. Also we could use "planet" icon for planets? They listed "planet". Yes they gave "planet" as an icon. So we can use "planet" icon for planets. But they want four planets of increasing size, with labels and orbit arrows.
+
+We can also draw a small arrow for orbit.
+
+We need to follow the spec: "Image: a box whose inside is diagonals" but that's for an image placeholder. We can use a "box with diagonals" to show the sun? Possibly use a box with diagonals for the sun, but we have icon.
+
+Given the instructions: "Icons: write a Lucide icon name between colons. Inline: `Settings [:settings:]`. For a big icon, draw a box and put ONLY the token inside it — the box is the icon's size: `┌──────────┐` etc. Use icons for nouns (rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain). Never draw the object with characters when an icon name exists."
+
+Thus we should use the icon token for the sun: use "star"? The sun is a star. We can also use "sun"? Not in list, so best use "star". For planets, use "planet". For maybe "moon"? Not in list. We can have the orbits: maybe using arrows.
+
+We need to output only the drawing in one code block.
+
+The diagram must be 60-90 characters wide; we need to ensure width is within that range.
+
+Let's design a diagram like this:
+
+We can have a top header like "# Solar System". Then we have a central sun with "star" icon, maybe in a box like:
+
+```
+   ┌──────┐
+   │ :star: │
+   └──────┘
+```
+
+We can put the sun near the center. Then draw orbit lines, and each planet at increasing distance.
+
+Planets: Mercury, Venus, Earth, Mars maybe? They said 4 planets of increasing size, not necessarily in order but we can do Mercury (small), Venus (next), Earth (larger), Jupiter (largest). But they said "increasing size". The sizes: Mercury smallest, then Venus, Earth, Jupiter. The labels: "Mercury", "Venus", "Earth", "Jupiter".
+
+But also they might want orbital arrows: we can draw a curved arrow to the right around the sun representing orbit.
+
+We need to keep within 60-90 characters width, so maybe about 70-80 characters wide. Use ~20 lines.
+
+We need to represent orbit arcs: we can use characters like "───────" for horizontal lines and maybe "┐" "└" for arcs.
+
+Maybe something like:
+
+```
+        ┌──────┐
+        │ :star: │
+        └──────┘
+  ──────►      ◄──────
+
+   ( ) Mercury   ( ) Venus   ( ) Earth   ( ) Jupiter
+```
+
+But need more precise.
+
+We can use vertical arrangement: sun at top, planets below in a row, with orbit arrows between.
+
+But perhaps it's better to have sun at left, planets to the right with increasing distance and size.
+
+Plan:
+
+- Left side: Sun (icon star)
+- Then orbit line (horizontal line) with arrow indicating direction (rightwards)
+- Then four planet icons placed at increasing distances along the line: maybe "planet" icon with a label below each.
+
+We need to consider that icons are drawn as boxes. For big icons, draw a box and put the token inside, like:
+
+```
+┌───────┐
+│ :star: │
+└───────┘
+```
+
+Similarly for each planet:
+
+```
+┌───────┐
+│ :planet: │
+└───────┘
+```
+
+But that will be repeated four times.
+
+We need labels: "Mercury", "Venus", "Earth", "Jupiter". Under each icon.
+
+We also need to represent orbit arrows: Could be drawn as a curved arrow above each planet or as a line connecting them.
+
+Given the spec: "orbit arrows" can be drawn as curved arrow like "↻". Or we can draw a simple arrow like "────►". The spec says "arrow between things: `──►`". So we can have something like "──►". For orbits maybe something like "──►". Could place that above each planet.
+
+Alternatively, we can draw orbit lines like a series of arcs. But we need to keep it simple.
+
+Thus a diagram like:
+
+```
+   # Solar System
+
+   ┌───────┐    ──►      ┌───────┐    ──►      ┌───────┐    ──►      ┌───────┐
+   │ :star: │            │ :planet: │          │ :planet: │          │ :planet: │
+   └───────┘            └───────┘            └───────┘            └───────┘
+    Mercury             Venus                Earth                Jupiter
+```
+
+But this is too wide: each box is maybe 9 characters wide plus spacing. 4 boxes with 9 characters each would be ~36 chars plus spaces, plus arrows ~ 5 chars each. The total maybe ~70 characters. That is within 60-90. Let's compute: Box width maybe 9 characters: "┌───────┐" is 9 wide (including corners). Inside we have maybe a space then token and space then "│"? Actually "┌───────┐" is 9 characters: index 0 is "┌", indices 1-7 are "-", index 8 is "┐". The content inside can be " :star: " (including spaces). That's 9 characters as well? Let's count: space, colon, star, colon, space: that's 5? Wait " :star: " includes a leading space, colon, star, colon, trailing space: total 7? Let's count exactly: characters: space (1), colon (2), s (3), t (4), a (5), r (6), colon (7), space (8). That's 8 characters. Actually " :star: " includes a leading space and trailing space, but the colon is one char each, star is four letters. So total 1 + 1 + 4 + 1 + 1 = 8. That fits within 9 width. So the box is okay.
+
+Thus each icon box is 9 characters wide. Four of them = 9*4 = 36. Between them we can have arrows "──►" which is 4 characters (two hyphens, right arrow). Could also add some spacing: maybe a space before and after.
+
+Let's propose arrangement: Sun at left, maybe separate from planets. But we could also have the sun as first box, then arrow, then planet boxes.
+
+We can draw a diagram like:
+
+```
+# Solar System
+
+┌───────┐  ──►  ┌───────┐  ──►  ┌───────┐  ──►  ┌───────┐
+│ :star: │      │ :planet: │      │ :planet: │      │ :planet: │
+└───────┘      └───────┘      └───────┘      └───────┘
+ Sun           Mercury       Venus         Earth         Jupiter
+```
+
+But we need to keep width within 90 characters. Let's count approximate width: "┌───────┐" = 9, space =1, arrow "──►" =4, space =1 => 15. Then next box 9, etc. Let's compute precisely.
+
+We'll need to include labels under each box. The labels need to be placed under each icon.
+
+We need to include a title heading: "# Solar System". Use "# Title" heading spec: "# Title". So we can include "# Solar System". That line will be "# Solar System". That's fine.
+
+The spec: "Plain words are text. Leave a blank line between elements when you can; spacing is preserved 1:1." So we can put blank lines between sections.
+
+Thus we can produce something like:
+
+```
+# Solar System
+
+┌───────┐ ──► ┌───────┐ ──► ┌───────┐ ──► ┌───────┐
+│ :star: │     │ :planet: │     │ :planet: │     │ :planet: │
+└───────┘     └───────┘     └───────┘     └───────┘
+ Sun         Mercury        Venus         Earth        Jupiter
+```
+
+But need to ensure consistent spacing. Let's try to align.
+
+We can adjust spacing: "┌───────┐" then a space then arrow then space then next box. But we need to maintain same width for each row. Actually the spec says: "Every row of a box must be the same width." That applies to each box, not the whole line. So each box row must be same width within that box. That's okay.
+
+But the row of the whole diagram may be longer than any box, but it's okay. However we need to maintain "screen" rectangle? Not needed for diagram; just drawing.
+
+But need to ensure each line is within 60-90 characters. Let's compute line lengths.
+
+We'll design each line with maximum ~80 characters.
+
+We'll have four planet boxes. Let's decide to place them at equal distances but with labels.
+
+Better to place the sun on left, then arrow to first planet, then arrow to second, etc. But we could also have a "orbit" arrow above each planet, but perhaps simpler: just arrows between boxes.
+
+Thus line 1: title line "# Solar System". That's maybe 14 characters.
+
+Then blank line.
+
+Then line with top of boxes: "┌───────┐ ──► ┌───────┐ ──► ┌───────┐ ──► ┌───────┐". Let's count characters:
+
+"┌───────┐" = 9
+space =1 =>10
+"──►" =3? Actually "──►" is two hyphens and a right arrow. The arrow character "►" is one char. So "──►" = 3 characters. So after that we have "──►". So we have "──►" =3, plus maybe a space before and after. Let's include a space before arrow: after box we have space, then arrow, then space. So " ┌───────┐ ──►". That is: space (1) + 9 + space (1) + "──►" (3) + space (1) = 15? Let's compute precisely: after first box we want a space then arrow then space, then next box. That is: " ┌───────┐ ──► ". Actually we want to start with box at beginning of line, no leading space. So we can do:
+
+"┌───────┐ ──► ┌───────┐ ──► ┌───────┐ ──► ┌───────┐"
+
+Let's count: "┌───────┐" =9, then space =1 =>10, "──►"=3 =>13, space=1 =>14, next "┌───────┐"=9 =>23, space=1 =>24, "──►"=3 =>27, space=1 =>28, next box=9 =>37, space=1 =>38, "──►"=3 =>41, space=1 =>42, final box=9 =>51. So line length = 51 characters. That's fine.
+
+Then next line: "│ :star: │     │ :planet: │     │ :planet: │     │ :planet: │". But need to ensure each box's interior is same width. The interior is " :star: " which is 8 characters. The box width is 9, so we need to fill with spaces to match width. For each box interior we can pad to match width. The box is "│" at start and end, interior is 7 spaces? Actually box interior width is width-2 = 7. Because box width includes corners. For a 9-width box, interior width = 7. So we need 7 characters inside. We can put " :star: " which is 8, too many. We need exactly 7 characters inside. Wait, we need to think: The box is drawn as:
+
+```
+┌───────┐
+│       │
+└───────┘
+```
+
+The interior row is "│       │". That's 1 + 7 spaces + 1 = 9 characters. Actually "│" + 7 spaces + "│" = 9. So interior width is 7 characters. So we need to put 7 characters inside. Our token " :star: " is 8 characters. So we need to adjust. We can use token with less spaces. Perhaps we can use ":star:" (no spaces). That's 6 characters (colon, star, colon). Actually ":star:" is 6 characters: colon (1), s (2), t (3), a (4), r (5), colon (6). That's 6 characters. That's less than 7. We need 7 characters. We can add one space either before or after, or maybe add a trailing space. For example " :star:" (space then colon star colon) = 7? Let's count: space (1), colon (2), s (3), t (4), a (5), r (6), colon (7) = 7. That's good. Or we could do ":star: " (colon star colon space) = also 7. So we can use " :star:" or ":star: ". Let's choose " :star:" to have leading space. Similarly for planets: we can use " :planet:" (space + colon + planet + colon). Let's count: space (1), colon (2), p (3), l (4), a (5), n (6), e (7), t (8), colon (9) = 9 characters. That's too many. Wait "planet" is 6 letters: p l a n e t = 6. So " :planet:" includes space (1), colon (2), p (3), l (4), a (5), n (6), e (7), t (8), colon (9) = 9 characters. That's more than 7. So we need to adjust. The token must be exactly 7 characters interior. So we need to choose a token that is 7 characters long, or pad to 7. The interior width is 7. So we can do token of 7 characters: either we can use ":planet:" which is 8? Let's count: colon (1), p (2), l (3), a (4), n (5), e (6), t (7), colon (8) = 8. That's too many. So we cannot put the full word "planet". The spec says "Icons: write a Lucide icon name between colons." So we must use exactly the token like ":planet:". That's 8 characters. But interior width is 7, so we need to adjust box width to accommodate token. We can make the box larger. The spec says "draw a box and put ONLY the token inside it — the box is the icon's size." It doesn't specify a fixed width; we can choose a box width that fits the token. So we can make the box wider to fit the token. The interior width must be at least the token length. So we can adjust box width accordingly. For example, for token of length 8, interior width 8, box width = interior width + 2 = 10. So we can have a box of width 10 (including corners). That yields interior row: "│         │"? Actually interior width = 8, so row would be "│        │" (8 spaces). Then we put token inside, perhaps with spaces around? The spec says "draw a box and put ONLY the token inside it — the box is the icon's size". So we should only have the token inside, no extra spaces. But the interior may have spaces if token length less than interior width. But we need interior width exactly token length? The spec: "draw a box and put ONLY the token inside it — the box is the icon's size". Means we should draw a box that exactly fits the token, i.e., interior width = token length, box width = token length + 2. So for token length 8, we draw a box of width 10: top row: "┌────────┐" (8 hyphens), interior row: "│:planet:│", bottom row: "└────────┘". That is exactly 10 characters: "┌" + 8 "-" + "┐". Then interior row: "│" + token + "│". That's also 10 characters: "│" + 8 chars + "│". That seems correct.
+
+Thus we should draw each icon as a box with exactly token length interior. So for sun, token is ":star:" (6 characters). So box width = 6+2 = 8. So we draw top: "┌──────┐" (6 hyphens). interior: "│:star:│". bottom: "└──────┘". That's 8 characters width. For planets, token ":planet:" is 8 characters, box width = 10, so top "┌────────┐" (8 hyphens), interior "│:planet:│", bottom "└────────┘". That's correct.
+
+Thus each icon box will have different widths. That's okay.
+
+Now we need to place them in the diagram with arrows between. We must ensure each row is consistent width for each box, but we can have different box widths across the line; the spec for a "screen" is each row of a box must be same width. But we are not drawing a screen; we are drawing a diagram with multiple boxes. They probably want each box's rows to be consistent within that box. That's fine.
+
+Thus we can have boxes of different widths.
+
+Thus we need to design a diagram with:
+
+- Title: "# Solar System"
+- Then a line with boxes and arrows: sun box, arrow, planet1 box, arrow, planet2 box, arrow, planet3 box, arrow, planet4 box.
+
+But need to include labels: maybe under each box we can put the label. But we need to align labels under each box. Possibly we can put them on separate lines.
+
+We can also include a note "orbit arrows" above or below.
+
+Given the spec: "orbit arrows" - maybe we can draw curved arrows around each planet, but simpler to have arrows between boxes.
+
+But also maybe we can add a small arrow above each planet indicating orbit direction. But not required.
+
+Given the spec, they want "labels, orbit arrows". So we can include labels for each planet and maybe orbit arrows above each planet (like a small "↻").
+
+But we can also embed arrows between boxes; that's likely enough.
+
+We need to keep width ~60-90 characters. Let's compute approximate width: Sun box width = 8, then arrow "──►" (3) + spaces = maybe 1+3+1=5? Actually "──►" is 3 characters, plus a space before and after = 5. Then planet1 box width = 10, then arrow 5, planet2 box width =10, arrow 5, planet3 box width=10, arrow 5, planet4 box width=10. Summing: 8+5+10+5+10+5+10+5+10 = 68. That's within 60-90. Good.
+
+Thus we can do a line with these boxes and arrows. Then below we can place labels. Possibly each label centered under each box. We need to align them. The labels: "Sun", "Mercury", "Venus", "Earth", "Jupiter". We can place them under each box.
+
+We can also add a small arrow above each planet indicating orbit, but not needed.
+
+The spec also says "Image: a box whose inside is diagonals, e.g. ...". Not needed.
+
+Now we need to draw the diagram in ASCII with these boxes.
+
+We need to follow the spec: "Draw only ASCII, in one code block, no explanation." So we need to output a code block with the drawing.
+
+Thus final output:
+
+```
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+ Sun        Mercury        Venus         Earth        Jupiter
+```
+
+But need to ensure the arrows are placed correctly. The arrow is "──►". But we wrote "──►". Actually we wrote "──►". That's two hyphens and a right arrow. That's okay. However we need to ensure we have spaces around arrows. We can do " ──► " with spaces. But we need to maintain the width. Let's rewrite line:
+
+Line 1: top row of boxes:
+
+We need to decide exact spacing: Let's have each segment: box, space, arrow, space, next box.
+
+So we can do:
+
+"┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐"
+
+But note that we need to include arrow after each box except perhaps after the last. The spec says "arrow between things". So we have arrows between each box. So after last box we don't need arrow.
+
+Thus we can have:
+
+"┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐"
+
+But this includes arrow after the last box? Actually we have arrow before the last box. The pattern is: box, arrow, box, arrow, box, arrow, box, arrow, box. That's 5 boxes and 4 arrows. So the string would be: box1 + arrow + box2 + arrow + box3 + arrow + box4 + arrow + box5. That yields 4 arrows. So we should have "┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐". This includes arrow after each of first four boxes, then final box. That's correct.
+
+Now the interior rows: we need to place the token inside each box. For the sun: interior row is "│:star:│". That's exactly 8 characters: "│" + ":star:" + "│". That's 1+6+1=8. Good. For each planet: interior row "│:planet:│". That's "│" + 8 characters + "│" = 10. Good.
+
+Now bottom row: "└──────┘" for sun, "└────────┘" for planets.
+
+Now we need labels. We can place them under each box. The labels should be centered under each box. The width of each box is known: sun box width = 8, planet boxes width = 10. The labels: "Sun" (3), "Mercury" (7), "Venus" (5), "Earth" (5), "Jupiter" (7). We need to align them. We can use spaces to align.
+
+We could place them as separate words with spaces in between to match the positions. We can also add arrows above maybe.
+
+But let's see: we can put a line with labels: "  Sun    Mercury   Venus   Earth   Jupiter". But need to align under each box. Let's calculate positions.
+
+We have boxes and arrows arrangement:
+
+Segment positions:
+
+- Box1: start at column 0: width 8 (positions 0-7). Then a space, arrow, space: we need to compute offset.
+
+Let's simulate positions:
+
+We can treat each segment: box (width) + space + arrow (width 3) + space = total width of segment before next box. Actually after box we have a space, arrow, space. Then next box starts. So segment length = box_width + 1 + arrow_width + 1 = box_width + 5 (since arrow width is 3). So for box1 width 8, segment = 8 + 5 = 13. Then box2 starts at column 13. Box2 width 10, segment = 10 + 5 = 15, so box3 starts at column 13+15=28. Box3 start at 28, width 10, segment=15 => box4 start at 43. Box4 start at 43, width 10, segment=15 => box5 start at 58. Box5 width 10, end at 68 (0-indexed). So total width = 68. That matches earlier calculation.
+
+Thus we can place labels under each box, centered. For box1 start col 0 width 8, we can place "Sun" centered within width 8. The label "Sun" is 3 characters, we can pad with spaces left and right to center. For width 8, we can do 2 spaces before, then "Sun", then 3 spaces after? Actually 8-3 =5, so we can put 2 left spaces and 3 right spaces: "  Sun   ". That yields 8 characters: space, space, S, u, n, space, space, space = 8. That matches box width.
+
+Similarly for box2 width 10, label "Mercury" is 7 characters. 10-7=3, left pad 1, right pad 2? Actually to center, we can do left floor(3/2)=1, right ceil(3/2)=2. So " Mercury  ". That's 1 space before, "Mercury", 2 spaces after: total 10. Good.
+
+For box3 width 10, label "Venus" is 5. 10-5=5, left pad 2, right pad 3: "  Venus   ". That's 2 spaces before, "Venus", 3 after: total 10.
+
+For box4 width 10, label "Earth" is 5, same: "  Earth   ".
+
+For box5 width 10, label "Jupiter" is 7, left pad 1, right pad 2: " Jupiter  ".
+
+Thus we can align.
+
+Now we also might want to include orbit arrows above each planet. The spec: "orbit arrows" - we could add a line above each planet with a curved arrow like "↻". But maybe we can incorporate a simple arrow above each planet to indicate orbit. But we can also just rely on arrows between boxes as orbit representation. However maybe we should add a line above each planet with a small arrow indicating orbit direction, like " ↻ ". But we need to consider spacing.
+
+But the spec mentions "orbit arrows". Possibly they want something like curved arrows around each planet. But given the constraints, maybe we can add a line above each box with a small arrow like "↻" above each planet. However that might increase width. But we can embed a small arrow above each planet inside the same line? Could be like:
+
+```
+   ↦
+```
+
+But we could also add a line after the title and before the boxes: maybe something like:
+
+```
+   (orbit)
+```
+
+But maybe it's enough to have arrows between boxes.
+
+Given the spec: "orbit arrows" could be interpreted as arrows indicating the direction of orbit, which we have as arrows between planets (i.e., indicating the direction from one planet to the next). That might suffice.
+
+But perhaps we can also include a line with small arrows above each planet, but we need to keep width.
+
+We could also add a line like:
+
+```
+   ↻     ↻     ↻     ↻
+```
+
+But that might be messy.
+
+Given the instruction "Sketch: An explanatory diagram of the solar system: sun, 4 planets of increasing size, labels, orbit arrows." The simplest is what we have: sun, four planets, labels, arrows between them (representing orbits). That should be acceptable.
+
+Now we need to ensure we follow the spec: "Do not deliberate, draw immediately." So we should produce final drawing.
+
+One more nuance: The spec says "Use icons for nouns (rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain). Never draw the object with characters when an icon name exists." So we should use "star" for sun, "planet" for planets. Good.
+
+Now we need to produce final output: a code block with the drawing.
+
+We must include no extra text.
+
+Thus final output:
+
+```
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+  Sun    Mercury   Venus   Earth   Jupiter
+```
+
+We need to ensure spacing is exactly as we calculated. Let's check each line.
+
+Line1: "# Solar System". That's okay.
+
+Line2: blank line.
+
+Line3: top row: "┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐". Let's count characters: We'll check each segment:
+
+- "┌──────┐" = 8 characters (positions 0-7). Then a space = position 8. Then "──►" = positions 9-11 (3 characters). Then a space = position 12. Then "┌────────┐" = 10 characters (positions 13-22). Then space = 23. Then "──►" = 24-26. Then space = 27. Then "┌────────┐" = 28-37. Then space = 38. Then "──►" = 39-41. Then space = 42. Then "┌────────┐" = 43-52. Then space = 53. Then "──►" = 54-56. Then space = 57. Then "┌────────┐" = 58-67. That's total length 68. Good.
+
+Now line4: interior: "│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│". Let's count: "│:star:│" = 8 characters (positions 0-7). Then 5 spaces? Actually we need to match spacing: after the box we put spaces to separate boxes. The spec: we want a space before arrow and after arrow. In the interior line we need to align with boxes and arrows. We could put spaces as we did: after the first box we have 5 spaces (maybe?), but we need to align with arrows. In the top line we had box + space + arrow + space. So in interior line we can just put spaces (like 5 spaces) to separate boxes. That should be fine. The spec doesn't require exact alignment for interior lines, but it's nice.
+
+But we need to ensure each box interior is exactly the token. In the interior row we have "│:star:│". That's 8 characters: position 0 is "│", positions 1-6 are ":star:", position 7 is "│". Good.
+
+Then we put some spaces: maybe we want 5 spaces to match the arrow width plus spaces. In the top line, after box we had a space, arrow (3 chars), space = total 5 characters. So we can put 5 spaces in interior line to align with the arrow region. That would be consistent: "     ". Then next box "│:planet:│". That's 10 characters. Then 5 spaces, then next box, etc.
+
+Thus interior line: "│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│". Let's count: first box: 8, then 5 spaces =13, then second box: 10 =>23, then 5 spaces =>28, third box 10 =>38, then 5 spaces =>43, fourth box 10 =>53, then 5 spaces =>58, fifth box 10 =>68. That matches width 68. Good.
+
+Now bottom line: "└──────┘     └────────┘     └────────┘     └────────┘     └────────┘". That matches similar pattern: box widths 8 and 10, with spaces.
+
+Now labels line: "  Sun    Mercury   Venus   Earth   Jupiter". Let's align.
+
+We need to align labels under each box. Let's compute positions: Box1 start col 0 width 8. We want label "Sun" centered. We earlier said "  Sun   " (two spaces before, three after). That yields 8 characters: positions: 0-1 spaces, 2-4 "Sun", 5-7 spaces. That's correct. Then we need to have spaces between labels to align with spaces between boxes (including the arrow region). The arrow region occupies 5 characters. So after the first label, we should have 5 spaces to align with arrow region. Then next label start at column 13 (the start of box2). Indeed we have label "Mercury" centered in width 10: " Mercury  ". That's 1 space before, "Mercury", 2 spaces after. That occupies columns 13-22. Then we need 5 spaces after that to align with arrow region: columns 23-27. Then next label start at column 28: "  Venus   " (2 spaces before, 3 after). Then 5 spaces, then next label at column 43: "  Earth   ". Then 5 spaces, then next label at column 58: " Jupiter  ". That matches.
+
+Thus label line: "  Sun    Mercury   Venus   Earth   Jupiter". Let's check spacing: After "Sun" we need 5 spaces. In our string we have "  Sun    Mercury". That is "  Sun" (5 characters? Actually "  Sun" is 4 characters: two spaces, S, u, n? Wait we need to be precise. Let's break down:
+
+We want label "Sun" with leading 2 spaces and trailing 3 spaces: that yields "  Sun   ". That's 8 characters. Then we need to add 5 spaces to separate to next label: that yields "  Sun     " (8+5=13). Then we want "Mercury" with leading 1 and trailing 2: " Mercury  " (10). Then 5 spaces: "     ". Then "Venus": "  Venus   " (10). Then 5 spaces. Then "Earth": "  Earth   " (10). Then 5 spaces. Then "Jupiter": " Jupiter  " (10). So the combined string: "  Sun     Mercury     Venus     Earth     Jupiter". That seems to match.
+
+Thus we can produce that line. Let's write exactly: "  Sun     Mercury     Venus     Earth     Jupiter". That seems to have correct spacing: after "Sun" we have 5 spaces, after "Mercury" we have 5 spaces, etc. Let's verify:
+
+We want to ensure each label is placed correctly. Let's count characters:
+
+- "  Sun" = 4? Actually "  Sun" includes two spaces then 'S' then 'u' then 'n' = 4? Wait count: positions: 0 = space, 1 = space, 2 = S, 3 = u, 4 = n. That's 5 characters. But we need 8 characters for label line? Wait earlier we said label line should be width 8 for first box. But we must include trailing spaces to fill the width of the box. But the label line we are writing is not necessarily exactly the same width as the box; we can just place the label and the spaces after it to align with next box. The spec: "Plain words are text. Leave a blank line between elements when you can; spacing is preserved 1:1." So we can just write the labels separated by spaces; the exact spacing is not enforced to match box width exactly, but we need to align them under each box. We can approximate.
+
+But we should try to align them as we described: start of each label at the correct column. That is column positions: 0, 13, 28, 43, 58. Let's see if our string matches that.
+
+Our string: "  Sun     Mercury     Venus     Earth     Jupiter". Let's count characters up to each label start.
+
+We'll count characters:
+
+Indices:
+0: space
+1: space
+2: S
+3: u
+4: n
+5: space
+6: space
+7: space
+8: space
+9: space
+10: M
+...
+
+Actually let's write the string exactly: we need to include 2 spaces before Sun, then Sun, then 5 spaces, then Mercury (with 1 leading space, Mercury, 2 trailing spaces), then 5 spaces, then Venus (2 leading spaces, Venus, 3 trailing spaces), then 5 spaces, then Earth (2 leading, Earth, 3 trailing), then 5 spaces, then Jupiter (1 leading, Jupiter, 2 trailing). That's the plan.
+
+Thus string: "  Sun     Mercury     Venus     Earth     Jupiter". Let's break it down:
+
+- "  Sun" (two spaces + "Sun") = 5 characters (positions 0-4). But we need "  Sun   " (two spaces, Sun, three spaces) to fill width 8. However we only have 5 characters so far, then we have 5 spaces after that to separate to next label. So we need to ensure that after "Sun" we have 3 spaces to fill the box width, then 5 spaces for arrow region. That yields total after Sun: 3+5 = 8 spaces. In the string we have "  Sun     ". That's "  Sun" + 5 spaces? Let's count: "  Sun" is 5 characters, then we have "     " (5 spaces). That yields total 10 characters after Sun's "n"? Actually we need to check: The string "  Sun     " includes "  Sun" (5) + 5 spaces = 10 characters. But we need 3 spaces to fill the remainder of box width (to make 8) plus 5 spaces for arrow region = 8. So we need 8 spaces after Sun. However we have 5 spaces only. So we need to adjust.
+
+Thus we need to have exactly 8 spaces after Sun before Mercury. Let's derive exactly:
+
+We want to start Mercury at column 13. Sun occupies columns 0-7 (width 8). So after Sun we need to fill columns 8-12 (5 columns) to get to column 13. That is exactly 5 spaces. Wait, let's compute: Sun occupies columns 0-7 (8 columns). The next column is 8, then we have arrow region columns 8-12 (5 columns). That is exactly 5 spaces. So after Sun we need exactly 5 spaces to start Mercury at column 13. That matches arrow region width. So we need to have 5 spaces after Sun, not 8. But we also need to fill the remainder of Sun's box to make it width 8: Sun is placed at columns 0-7. The label "Sun" is 3 characters, we need to fill the remaining 5 columns within the box (columns 5-7) with spaces. That is 5 spaces after "Sun". So we need to add 5 spaces after "Sun" to fill the box width. Then we also need 5 spaces for arrow region. That yields total 10 spaces after "Sun"? Wait we need to separate two concepts: The label "Sun" is placed under the box, not necessarily padded to fill the box width. But to align the label under the box, we can place it starting at column 0, but the box occupies columns 0-7. The label "Sun" occupies columns 2-4 (if we center). Actually we want "Sun" centered within the box: we can start at column 2 (0-indexed). That yields left padding of 2 spaces, then "Sun" at columns 2-4, then right padding of 3 spaces to fill to column 7. So we need to include those left and right spaces in the label line. So we need to write "  Sun   " (two spaces before, three spaces after). That's exactly 8 characters. That covers columns 0-7.
+
+Now after that, we need to move to next box at column 13. So we need to add spaces for columns 8-12 (5 spaces). That yields total after "  Sun   " we add 5 spaces. So the string should be "  Sun   " + "     " = "  Sun     ". That's exactly 8 + 5 = 13 characters. The first character of Mercury should be at column 13. So we should write "  Sun     Mercury ...". But we must ensure Mercury is placed at column 13. The string "  Sun     Mercury" includes "  Sun   " (8 chars) + "     " (5 spaces) = 13 characters, then Mercury starts at index 13. Good.
+
+Thus we need to have exactly "  Sun   " (two spaces, Sun, three spaces) then 5 spaces, then Mercury.
+
+Thus the label line should be:
+
+"  Sun     Mercury     Venus     Earth     Jupiter"
+
+But we need to ensure each label is properly padded.
+
+Let's construct each label string with correct padding:
+
+- Sun: "  Sun   " (2 spaces before, 3 after). That's 8 characters.
+- Then 5 spaces: "     ".
+- Mercury: we want centered in width 10. That is " Mercury  " (1 space before, 2 after). That's 10 characters. So we need to put exactly that after the 5 spaces.
+
+Thus after Sun and 5 spaces, we place " Mercury  ". That will occupy columns 13-22.
+
+- Then 5 spaces: "     ".
+- Venus: centered width 10: "  Venus   " (2 spaces before, 3 after). That's 10. So after 5 spaces we put "  Venus   ".
+
+- Then 5 spaces: "     ".
+- Earth: "  Earth   " (2 before, 3 after). That's 10.
+
+- Then 5 spaces: "     ".
+- Jupiter: centered width 10: " Jupiter  " (1 before, 2 after). That's 10.
+
+Thus the final label line is:
+
+"  Sun     Mercury     Venus     Earth     Jupiter"
+
+But we must verify each segment: It should be exactly:
+
+- "  Sun   " (8)
+- "     " (5)
+- " Mercury  " (10)
+- "     " (5)
+- "  Venus   " (10)
+- "     " (5)
+- "  Earth   " (10)
+- "     " (5)
+- " Jupiter  " (10)
+
+Combine: 8+5+10+5+10+5+10+5+10 = 68. Good.
+
+Thus the label line is exactly 68 characters, matching the width of the diagram. Perfect.
+
+Now let's check the line: "  Sun     Mercury     Venus     Earth     Jupiter". Let's count characters: We'll break it down:
+
+- "  Sun   " = characters: space (0), space (1), S (2), u (3), n (4), space (5), space (6), space (7). That's indices 0-7.
+
+- Then "     " = indices 8-12 (5 spaces).
+
+- Then " Mercury  " = indices 13-22: a leading space at 13, then M e r c u r y at 14-20, then two spaces at 21-22.
+
+- Then "     " = indices 23-27.
+
+- Then "  Venus   " = indices 28-37: two spaces at 28-29, V e n u s at 30-34, three spaces at 35-37.
+
+- Then "     " = indices 38-42.
+
+- Then "  Earth   " = indices 43-52: two spaces at 43-44, E a r t h at 45-49, three spaces at 50-52.
+
+- Then "     " = indices 53-57.
+
+- Then " Jupiter  " = indices 58-67: a space at 58, J u p i t e r at 59-65, two spaces at 66-67.
+
+Thus total 68 characters. Good.
+
+Thus we can produce that line.
+
+Now check the interior line: we need to match width. The interior line we wrote: "│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│". Let's verify width: first box: "│:star:│" = 8. Then 5 spaces = 5 => 13. Then "│:planet:│" = 10 => 23. Then 5 spaces => 28. Then next "│:planet:│" = 10 => 38. Then 5 spaces => 43. Then next =10 => 53. Then 5 spaces =>58. Then final =10 =>68. So width =68. Good.
+
+Bottom line: "└──────┘     └────────┘     └────────┘     └────────┘     └────────┘". That matches width.
+
+Thus the drawing is consistent.
+
+Now we need to include heading line: "# Solar System". That's fine.
+
+We also need a blank line after heading. Then the diagram lines.
+
+Thus final output:
+
+```
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+  Sun     Mercury     Venus     Earth     Jupiter
+```
+
+But we need to verify spacing: In the interior line we used "│:star:│" and "│:planet:│". However we need to ensure we have spaces between boxes. In the top line we have "┌──────┐ ──► ┌────────┐ ──► ...". In the interior line we used "│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│". That matches. In bottom line we used "└──────┘     └────────┘     └────────┘     └────────┘     └────────┘". Good.
+
+Now we also might want to add a line for orbit arrows. But we already have arrows between boxes, which can serve as orbit arrows. The spec says "orbit arrows" - we have them. Could also add a line above boxes with curved arrows, but maybe not needed. The diagram is already fairly clear.
+
+Now check the spec: "Draw only ASCII, in one code block, no explanation." So we must output exactly the code block with the drawing, no extra text.
+
+Thus final answer is the above.
+
+One more nuance: The spec says "A screen is one rectangle: ...". But we are not making a screen, we are making a diagram. That's fine.
+
+The spec also says "Use icons for nouns (rocket, database, user, globe, brain, cloud, bell, heart, star, planet, mountain)." We used "star" for sun and "planet" for planets. Good.
+
+Thus final answer is:
+
+```
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+  Sun     Mercury     Venus     Earth     Jupiter
+```
+
+We must ensure that the arrow is exactly "──►". In the top line we used "──►". That's correct. In the interior line we used spaces for arrow region. That matches.
+
+We also need to ensure we didn't include any trailing spaces. But it's okay.
+
+Now output that.
+</think>
+
+``` 
+# Solar System
+
+┌──────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐ ──► ┌────────┐
+│:star:│     │:planet:│     │:planet:│     │:planet:│     │:planet:│
+└──────┘     └────────┘     └────────┘     └────────┘     └────────┘
+  Sun     Mercury     Venus     Earth     Jupiter
+```
